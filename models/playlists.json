@@ -1,0 +1,9 @@
+{
+  "file": "./models/playlists.json",
+  "playlists": [
+    {
+      "title": "My favourites",
+      "_id": "09c3eba0-9337-4c5b-8831-6c0631e3dc92"
+    }
+  ]
+}

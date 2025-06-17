@@ -10,7 +10,7 @@ export const playlistController = {
     };
     response.render("playlist-view", viewData);
   },
-
+  
   async addTrack(request, response) {
     const playlist = await playlistStore.getPlaylistById(request.params.id);
     const newTrack = {
@@ -22,4 +22,12 @@ export const playlistController = {
     await trackStore.addTrack(playlist._id, newTrack);
     response.redirect("/playlist/" + playlist._id);
   },
+  async deleteTrack(request, response) {
+    const playlistId = request.params.playlistid;
+    const trackId = request.params.trackid;
+    console.log(`Deleting Track ${trackId} from Playlist ${playlistId}`);
+    await trackStore.deleteTrack(trackId);
+    response.redirect("/playlist/" + playlistId);
+  },
+  
 };

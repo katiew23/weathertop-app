@@ -36,4 +36,5 @@ export const playlistStore = {
     db.data.playlists = [];
     await db.write();
   },
+   
 };

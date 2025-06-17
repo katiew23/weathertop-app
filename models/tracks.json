@@ -1,0 +1,33 @@
+{
+  "file": "./models/tracks.json",
+  "tracks": [
+    {
+      "title": "Kate Williams Assignment 1 Programming",
+      "artist": "da",
+      "duration": null,
+      "_id": "b25f4b2e-a364-445f-a990-acc5ae158582",
+      "playlistid": "32408dca-979a-482d-ae7c-2e62e141ab1d"
+    },
+    {
+      "title": "seriously",
+      "artist": "da",
+      "duration": null,
+      "_id": "b04f2e21-5a0a-4846-9cdd-44e44934c054",
+      "playlistid": "a15ea27c-155d-4c13-8fe4-6c55d118c747"
+    },
+    {
+      "title": "seriously",
+      "artist": "da",
+      "duration": null,
+      "_id": "63f18a35-4111-4a51-9485-c39938f1e55e",
+      "playlistid": "a15ea27c-155d-4c13-8fe4-6c55d118c747"
+    },
+    {
+      "title": "",
+      "artist": "",
+      "duration": 0,
+      "_id": "8df26b32-38b6-4daf-8033-76ff44ec1a28",
+      "playlistid": "a15ea27c-155d-4c13-8fe4-6c55d118c747"
+    }
+  ]
+}

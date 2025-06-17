@@ -9,7 +9,7 @@ export const dashboardController = {
     console.log("dashboard rendering");
     response.render("dashboard-view", viewData);
   },
-
+  
   async addPlaylist(request, response) {
     const newPlayList = {
       title: request.body.title,
@@ -18,4 +18,12 @@ export const dashboardController = {
     await playlistStore.addPlaylist(newPlayList);
     response.redirect("/dashboard");
   },
+  async deletePlaylist(request, response) {
+    const playlistId = request.params.id; 
+    console.log(`Deleting Playlist ${playlistId}`);
+    await playlistStore.deletePlaylistById(playlistId);
+    response.redirect("/dashboard");
+  }
+  
+  
 };
