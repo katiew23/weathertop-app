@@ -1,0 +1,19 @@
+{
+  "file": "./models/users.json",
+  "users": [
+    {
+      "firstName": "kate",
+      "lastName": "williams",
+      "email": "katiew23@gmail.com",
+      "password": "kate123",
+      "_id": "e3688ff8-bfd4-476b-8d68-c4387eea91af"
+    },
+    {
+      "firstName": "lucy",
+      "lastName": "williams",
+      "email": "sba23115@student.cct.ie",
+      "password": "lucy123",
+      "_id": "8065057f-8fdb-47e0-b586-c6f5fcb526a3"
+    }
+  ]
+}

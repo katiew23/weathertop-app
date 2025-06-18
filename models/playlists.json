@@ -2,8 +2,18 @@
   "file": "./models/playlists.json",
   "playlists": [
     {
-      "title": "My favourites",
-      "_id": "09c3eba0-9337-4c5b-8831-6c0631e3dc92"
+      "title": "seriously",
+      "_id": "980dbed1-e215-453b-bf5f-58a94c734a26"
+    },
+    {
+      "title": "seriously",
+      "userid": "e3688ff8-bfd4-476b-8d68-c4387eea91af",
+      "_id": "7d8a7df6-9bb9-45a0-af6a-5e7825a0ae78"
+    },
+    {
+      "title": "hello hello hello",
+      "userid": "8065057f-8fdb-47e0-b586-c6f5fcb526a3",
+      "_id": "2fdabfb1-5200-446b-9ec3-357df17b5aff"
     }
   ]
 }
