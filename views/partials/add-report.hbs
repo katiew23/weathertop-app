@@ -2,20 +2,50 @@
   <label class="label">Add Reading</label>
   <div class="field is-horizontal">
     <div class="field-body">
+
       <div class="field">
-        <input class="input" type="number" placeholder="Code" name="code" required>
+        <label class="label">Code</label>
+        <div class="control">
+          <div class="select is-fullwidth">
+            <select name="code" required>
+              <option value="">Select Weather Condition</option>
+              {{#each weatherCodes}}
+                <option value="{{code}}">{{code}} - {{description}}</option>
+              {{/each}}
+            </select>
+          </div>
+        </div>
       </div>
+
       <div class="field">
-        <input class="input" type="number" placeholder="Temperature (°C)" name="temperature" required>
+        <label class="label">Temperature (°C)</label>
+        <div class="control">
+          <input class="input" type="number" name="temperature" placeholder="00.0" step="0.1" required>
+        </div>
       </div>
+
       <div class="field">
-        <input class="input" type="number" placeholder="Wind Speed (km/h)" name="windSpeed" required>
+        <label class="label">Wind Speed (km/h)</label>
+        <div class="control">
+          <input class="input" type="number" name="windSpeed" placeholder="00.0" step="0.1" required>
+        </div>
       </div>
+
       <div class="field">
-        <input class="input" type="number" placeholder="Pressure (hPa)" name="pressure" required>
+        <label class="label">Wind Direction (°)</label>
+        <div class="control">
+          <input class="input" type="number" name="windDirection" placeholder="000" min="0" max="360" required>
+        </div>
       </div>
+
+      <div class="field">
+        <label class="label">Pressure (hPa)</label>
+        <div class="control">
+          <input class="input" type="number" name="pressure" placeholder="000" step="0.1" required>
+        </div>
+      </div>
+
     </div>
   </div>
-  <button class="button is-link">Add Report</button>
+  <button type="submit" class="button is-link">Add Report</button>
 </form>
-

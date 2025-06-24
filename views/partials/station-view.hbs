@@ -1,10 +1,112 @@
 {{> menu}}
 
 <section class="section">
-  <div class="title">
-    {{station.title}}
-  </div>
+  <h1 class="title">{{station.title}}</h1>
 
-  {{> edit-report }}
+  <!-- Reports Table -->
+  <table class="table is-fullwidth is-striped">
+    <thead>
+      <tr>
+        <th>Code</th>
+        <th>Temp</th>
+        <th>Wind Speed</th>
+        <th>Wind Direction</th>
+        <th>Pressure</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each reports}}
+      <tr>
+        <td>{{code}}</td>
+        <td>{{temperature}}</td>
+        <td>{{windSpeed}}</td>
+        <td>{{windDirection}}</td>
+        <td>{{pressure}}</td>
+        <td>
+          <a href="/station/{{../station._id}}/editreport/{{_id}}" class="button is-small is-info">Edit</a>
+          <a href="/station/{{../station._id}}/deletereport/{{_id}}" class="button is-small is-danger" onclick="return confirm('Delete this report?')">Delete</a>
+        </td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+
+  <!-- Add Report Form -->
+  <form action="/station/{{station._id}}/addreport" method="POST" class="box">
+    <div class="columns is-multiline is-mobile">
+      <div class="column is-one-fifth">
+        <label class="label">Code</label>
+        <div class="control">
+          <div class="select is-fullwidth">
+            <select name="code" required>
+              <option value="">Select Weather Code</option>
+              {{#each weatherCodes}}
+                <option value="{{code}}">{{code}} - {{description}}</option>
+              {{/each}}
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="column is-one-fifth">
+        <label class="label">Temperature</label>
+        <div class="control">
+          <input
+            class="input"
+            type="number"
+            step="0.1"
+            name="temperature"
+            placeholder="00.0°C"
+            required
+          />
+        </div>
+      </div>
+
+      <div class="column is-one-fifth">
+        <label class="label">Wind Speed</label>
+        <div class="control">
+          <input
+            class="input"
+            type="number"
+            step="0.1"
+            name="windSpeed"
+            placeholder="00.0 km/h"
+            required
+          />
+        </div>
+      </div>
+
+      <div class="column is-one-fifth">
+        <label class="label">Wind Direction</label>
+        <div class="control">
+          <input
+            class="input"
+            type="number"
+            min="0"
+            max="360"
+            name="windDirection"
+            placeholder="000°"
+            required
+          />
+        </div>
+      </div>
+
+      <div class="column is-one-fifth">
+        <label class="label">Pressure</label>
+        <div class="control">
+          <input
+            class="input"
+            type="number"
+            step="0.1"
+            name="pressure"
+            placeholder="000 hPa"
+            required
+          />
+        </div>
+      </div>
+    </div>
+
+    <button type="submit" class="button is-link mt-3">Submit Report</button>
+  </form>
 </section>
-

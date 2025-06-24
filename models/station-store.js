@@ -21,6 +21,7 @@ export const stationStore = {
   async getStationById(id) {
     await db.read();
     const station = db.data.stations.find((station) => station._id === id);
+    if (!station) return null;
     station.reports = await reportStore.getReportsByStationId(station._id);
     return station;
   },
@@ -28,8 +29,10 @@ export const stationStore = {
   async deleteStationById(id) {
     await db.read();
     const index = db.data.stations.findIndex((station) => station._id === id);
-    db.data.stations.splice(index, 1);
-    await db.write();
+    if (index !== -1) {
+      db.data.stations.splice(index, 1);
+      await db.write();
+    }
   },
 
   async deleteAllStations() {

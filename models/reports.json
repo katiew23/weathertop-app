@@ -1,4 +1,14 @@
 {
   "file": "./models/reports.json",
-  "reports": []
+  "reports": [
+    {
+      "code": 200,
+      "temperature": 65,
+      "windSpeed": 108,
+      "pressure": 63,
+      "date": "2025-06-24T15:58:42.078Z",
+      "_id": "504c1244-cb40-4c07-acb6-479be27dfcb4",
+      "stationId": "be6531ff-4a1a-4072-95e3-308656bd9bfd"
+    }
+  ]
 }

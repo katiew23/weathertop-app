@@ -29,7 +29,7 @@ export const reportController = {
 
     console.log(`Updating report ${reportId} from station ${stationId}`);
     const report = await reportStore.getReportById(reportId);
-    await reportStore.updateReport(report, updatedReport);
+    await reportStore.updateReport(reportId, updatedReport);
 
     response.redirect("/station/" + stationId);
   },
