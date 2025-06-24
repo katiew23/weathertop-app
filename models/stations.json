@@ -1,4 +1,17 @@
 {
   "file": "./models/stations.json",
-  "stations": []
+  "stations": [
+    {
+      "title": "Tramore",
+      "location": "Waterford",
+      "userid": "e3688ff8-bfd4-476b-8d68-c4387eea91af",
+      "_id": "be6531ff-4a1a-4072-95e3-308656bd9bfd"
+    },
+    {
+      "title": "Clonmel ",
+      "location": "Tipperary",
+      "userid": "e3688ff8-bfd4-476b-8d68-c4387eea91af",
+      "_id": "14245fd9-6cd7-4201-8f8e-380bf9e96071"
+    }
+  ]
 }

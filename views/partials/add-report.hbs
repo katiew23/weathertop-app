@@ -1,17 +1,21 @@
-<form class="box" action="/playlist/{{playlist._id}}/addtrack" method="POST">
-  <label>Enter Track Details:</label>
+<form action="/station/{{station._id}}/addreport" method="POST">
+  <label class="label">Add Reading</label>
   <div class="field is-horizontal">
     <div class="field-body">
       <div class="field">
-        <input class="input" type="text" placeholder="Enter Title" name="title">
+        <input class="input" type="number" placeholder="Code" name="code" required>
       </div>
       <div class="field">
-        <input class="input" type="text" placeholder="Enter Artist" name="artist">
+        <input class="input" type="number" placeholder="Temperature (°C)" name="temperature" required>
       </div>
       <div class="field">
-        <input class="input" type="text" placeholder="Enter duration" name="duration">
+        <input class="input" type="number" placeholder="Wind Speed (km/h)" name="windSpeed" required>
+      </div>
+      <div class="field">
+        <input class="input" type="number" placeholder="Pressure (hPa)" name="pressure" required>
       </div>
     </div>
   </div>
-  <button class="button is-primary">Add Track</button>
+  <button class="button is-link">Add Report</button>
 </form>
+
