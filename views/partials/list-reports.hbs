@@ -1,0 +1,32 @@
+<table class="table is-fullwidth">
+  <thead>
+    <tr>
+      <th>Code</th>
+      <th>Temperature (°C)</th>
+      <th>Wind Speed (km/h)</th>
+      <th>Pressure (hPa)</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each station.reports}}
+    <tr>
+      <td>{{code}}</td>
+      <td>{{temperature}}</td>
+      <td>{{windSpeed}}</td>
+      <td>{{pressure}}</td>
+      <td>
+        <a href="/station/{{../station._id}}/deletereport/{{_id}}" class="button">
+          {{> icons/delete}}
+        </a>
+      </td>
+      <td>
+        <a href="/station/{{../station._id}}/editreport/{{_id}}" class="button">
+          {{> icons/edit}}
+        </a>
+      </td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>

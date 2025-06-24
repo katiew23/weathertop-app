@@ -10,19 +10,19 @@ export const accountsController = {
 
   login(request, response) {
     const viewData = {
-      title: "Login to the Service",
+      title: "Login to WeatherTop",
     };
     response.render("login-view", viewData);
   },
 
   logout(request, response) {
-    response.cookie("playlist", "");
+    response.cookie("weathertop", ""); // changed from 'playlist'
     response.redirect("/");
   },
 
   signup(request, response) {
     const viewData = {
-      title: "Login to the Service",
+      title: "Signup to WeatherTop",
     };
     response.render("signup-view", viewData);
   },
@@ -30,15 +30,15 @@ export const accountsController = {
   async register(request, response) {
     const user = request.body;
     await userStore.addUser(user);
-    console.log(`registering ${user.email}`);
+    console.log(`Registering ${user.email}`);
     response.redirect("/");
   },
 
   async authenticate(request, response) {
     const user = await userStore.getUserByEmail(request.body.email);
     if (user) {
-      response.cookie("playlist", user.email);
-      console.log(`logging in ${user.email}`);
+      response.cookie("weathertop", user.email); // changed from 'playlist'
+      console.log(`Logging in ${user.email}`);
       response.redirect("/dashboard");
     } else {
       response.redirect("/login");
@@ -46,7 +46,7 @@ export const accountsController = {
   },
 
   async getLoggedInUser(request) {
-    const userEmail = request.cookies.playlist;
+    const userEmail = request.cookies.weathertop; // changed from 'playlist'
     return await userStore.getUserByEmail(userEmail);
   },
 };
