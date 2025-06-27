@@ -14,6 +14,20 @@
       "email": "sba23115@student.cct.ie",
       "password": "lucy123",
       "_id": "8065057f-8fdb-47e0-b586-c6f5fcb526a3"
+    },
+    {
+      "firstName": "lucy",
+      "lastName": "williams",
+      "email": "katiew2336@gmail.com",
+      "password": "kate123",
+      "_id": "17a48544-d54e-4096-a176-2bfa13444a42"
+    },
+    {
+      "firstName": "kate",
+      "lastName": "kate",
+      "email": "sba23115@student.cct.ie",
+      "password": "lucy123",
+      "_id": "b31f0794-b079-4fc7-a310-90f489bb4deb"
     }
   ]
 }

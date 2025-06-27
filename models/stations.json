@@ -2,16 +2,28 @@
   "file": "./models/stations.json",
   "stations": [
     {
+      "title": "Clonmel ",
+      "location": "Tipperary",
+      "userid": "17a48544-d54e-4096-a176-2bfa13444a42",
+      "_id": "d24e5a92-0be8-4794-b93a-856a9aaf0e39"
+    },
+    {
+      "title": "Wexford",
+      "location": "Courtown",
+      "userid": "17a48544-d54e-4096-a176-2bfa13444a42",
+      "_id": "0f9d9541-01f4-4c06-a5b8-595f04bb2b96"
+    },
+    {
       "title": "Tramore",
       "location": "Waterford",
-      "userid": "e3688ff8-bfd4-476b-8d68-c4387eea91af",
-      "_id": "be6531ff-4a1a-4072-95e3-308656bd9bfd"
+      "userid": "17a48544-d54e-4096-a176-2bfa13444a42",
+      "_id": "46dc2999-f122-4071-8822-8a6bf31c530d"
     },
     {
       "title": "Clonmel ",
-      "location": "Tipperary",
+      "location": "T",
       "userid": "e3688ff8-bfd4-476b-8d68-c4387eea91af",
-      "_id": "14245fd9-6cd7-4201-8f8e-380bf9e96071"
+      "_id": "e25dfb21-885e-4a76-9153-cb8b76635ad1"
     }
   ]
 }

@@ -2,16 +2,45 @@
 
 <section class="section">
   <h1 class="title">{{station.title}}</h1>
+  <p class="subtitle is-6">📍 Location: {{station.latitude}}, {{station.longitude}}</p>
 
-  <!-- Reports Table -->
+  {{#if reports.length}}
+    {{!-- Find the latest report --}}
+    {{#with (lookup reports (subtract (length reports) 1)) as |latestReport|}}
+      <div class="box mb-5">
+        <div class="columns is-multiline is-mobile is-vcentered">
+          <div class="column is-one-fifth has-text-centered">
+            <p><strong>Weather</strong></p>
+            <img src="http://openweathermap.org/img/wn/{{latestReport.iconCode}}@2x.png" alt="Weather Icon" style="height: 80px; width: 80px;">
+            <p>{{latestReport.description}}</p>
+          </div>
+          <div class="column is-one-fifth">
+            <p><strong>🌡️ Temperature</strong></p>
+            <p>Min: {{minTemp}}°C / Max: {{maxTemp}}°C</p>
+          </div>
+          <div class="column is-one-fifth">
+            <p><strong>💨 Wind Speed</strong></p>
+            <p>Min: {{minWind}} km/h / Max: {{maxWind}} km/h</p>
+          </div>
+          <div class="column is-one-fifth">
+            <p><strong>🌬️ Pressure</strong></p>
+            <p>Min: {{minPressure}} hPa / Max: {{maxPressure}} hPa</p>
+          </div>
+        </div>
+      </div>
+    {{/with}}
+  {{/if}}
+
   <table class="table is-fullwidth is-striped">
     <thead>
       <tr>
         <th>Code</th>
+        <th>Icon</th>
         <th>Temp</th>
         <th>Wind Speed</th>
         <th>Wind Direction</th>
         <th>Pressure</th>
+        <th>Icon Code (debug)</th>
         <th>Actions</th>
       </tr>
     </thead>
@@ -19,10 +48,18 @@
       {{#each reports}}
       <tr>
         <td>{{code}}</td>
+        <td>
+          <img
+            src="http://openweathermap.org/img/wn/{{iconCode}}@2x.png"
+            alt="Weather Icon"
+            style="height: 40px; width: 40px;"
+          />
+        </td>
         <td>{{temperature}}</td>
         <td>{{windSpeed}}</td>
         <td>{{windDirection}}</td>
         <td>{{pressure}}</td>
+        <td>{{iconCode}}</td> <!-- Debug column -->
         <td>
           <a href="/station/{{../station._id}}/editreport/{{_id}}" class="button is-small is-info">Edit</a>
           <a href="/station/{{../station._id}}/deletereport/{{_id}}" class="button is-small is-danger" onclick="return confirm('Delete this report?')">Delete</a>
@@ -32,7 +69,6 @@
     </tbody>
   </table>
 
-  <!-- Add Report Form -->
   <form action="/station/{{station._id}}/addreport" method="POST" class="box">
     <div class="columns is-multiline is-mobile">
       <div class="column is-one-fifth">

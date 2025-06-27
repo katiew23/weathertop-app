@@ -16,7 +16,7 @@ export const accountsController = {
   },
 
   logout(request, response) {
-    response.cookie("weathertop", ""); // changed from 'playlist'
+    request.session.userid = null;  
     response.redirect("/");
   },
 
@@ -37,7 +37,7 @@ export const accountsController = {
   async authenticate(request, response) {
     const user = await userStore.getUserByEmail(request.body.email);
     if (user) {
-      response.cookie("weathertop", user.email); // changed from 'playlist'
+      request.session.userid = user._id;  
       console.log(`Logging in ${user.email}`);
       response.redirect("/dashboard");
     } else {
@@ -46,7 +46,7 @@ export const accountsController = {
   },
 
   async getLoggedInUser(request) {
-    const userEmail = request.cookies.weathertop; // changed from 'playlist'
-    return await userStore.getUserByEmail(userEmail);
-  },
+    const userId = request.session.userid;  
+    return await userStore.getUserById(userId);  
+  }
 };

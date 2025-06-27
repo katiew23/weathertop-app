@@ -1,18 +1,85 @@
 {{> menu}}
 
 <section class="section">
-  <div class="title">
-    {{station.title}}
-  </div>
+  <h1 class="title">{{station.title}}</h1>
+  <p class="subtitle is-6">📍 Location: {{station.latitude}}, {{station.longitude}}</p>
 
-  <!-- Report Table -->
-  <table class="table is-fullwidth">
+  
+  {{#if reports.length}}
+    
+    <div class="box mb-5">
+      <div class="columns is-multiline is-mobile is-vcentered">
+        <div class="column is-one-fifth has-text-centered">
+          <p><strong>Weather</strong></p>
+          {{#if latestReport}}
+            <img src="http://openweathermap.org/img/wn/{{latestReport.iconCode}}@2x.png"
+                 alt="Weather Icon"
+                 style="height:80px;width:80px;">
+            <p>{{latestReport.description}}</p>
+          {{else}}
+            <p>N/A</p>
+          {{/if}}
+        </div>
+
+        <div class="column is-one-fifth">
+          <p><strong>🌡️ Temperature</strong></p>
+          <p>
+            Min: {{#if minTemp}}{{minTemp}}°C{{else}}N/A{{/if}}
+            /
+            Max: {{#if maxTemp}}{{maxTemp}}°C{{else}}N/A{{/if}}
+          </p>
+        </div>
+
+        <div class="column is-one-fifth">
+          <p><strong>💨 Wind Speed</strong></p>
+          <p>
+            Min: {{#if minWind}}{{minWind}} km/h{{else}}N/A{{/if}}
+            /
+            Max: {{#if maxWind}}{{maxWind}} km/h{{else}}N/A{{/if}}
+          </p>
+        </div>
+
+        <div class="column is-one-fifth">
+          <p><strong>🌬️ Pressure</strong></p>
+          <p>
+            Min: {{#if minPressure}}{{minPressure}} hPa{{else}}N/A{{/if}}
+            /
+            Max: {{#if maxPressure}}{{maxPressure}} hPa{{else}}N/A{{/if}}
+          </p>
+        </div>
+      </div>
+    </div>
+
+   
+    <div class="box mb-5">
+      <h2 class="subtitle">Latest Report</h2>
+      <div class="columns is-mobile is-vcentered">
+        <div class="column is-narrow">
+          <img src="http://openweathermap.org/img/wn/{{latestReport.iconCode}}@2x.png"
+               alt="Latest Icon"
+               style="height:60px;width:60px;">
+        </div>
+        <div class="column">
+          <p><strong>{{latestReport.description}}</strong></p>
+          <p>Temp: {{latestReport.temperature}}°C</p>
+          <p>Wind: {{latestReport.windSpeed}} km/h {{latestReport.windDirection}}</p>
+          <p>Pressure: {{latestReport.pressure}} hPa</p>
+        </div>
+      </div>
+    </div>
+
+  {{else}}
+    <p>No reports yet for this station.</p>
+  {{/if}}
+
+  <table class="table is-fullwidth is-striped">
     <thead>
       <tr>
         <th>Code</th>
         <th>Icon</th>
         <th>Temperature (°C)</th>
         <th>Wind Speed (km/h)</th>
+        <th>Wind Direction</th>
         <th>Pressure (hPa)</th>
         <th>Actions</th>
       </tr>
@@ -22,24 +89,25 @@
         <tr>
           <td>{{code}}</td>
           <td>
-            <img src="https://openweathermap.org/img/wn/{{getIconForCode code}}@2x.png" alt="Weather Icon" />
+            <img src="http://openweathermap.org/img/wn/{{iconCode}}@2x.png"
+                 alt="Icon"
+                 style="height:40px;width:40px;">
           </td>
           <td>{{temperature}}</td>
           <td>{{windSpeed}}</td>
+          <td>{{windDirection}}</td>
           <td>{{pressure}}</td>
           <td>
-            <a href="/station/{{../station._id}}/editreport/{{_id}}" class="button is-small is-info">Edit</a>
-<a href="/station/{{../station._id}}/deletereport/{{_id}}" class="button is-small is-danger">Delete</a>
-
-
+            <a href="/station/{{../station._id}}/editreport/{{_id}}"
+               class="button is-small is-info">Edit</a>
+            <a href="/station/{{../station._id}}/deletereport/{{_id}}"
+               class="button is-small is-danger"
+               onclick="return confirm('Delete this report?')">Delete</a>
           </td>
         </tr>
       {{/each}}
     </tbody>
   </table>
 
-  <!-- Add New Report -->
   {{> add-report}}
 </section>
-
-
