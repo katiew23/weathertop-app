@@ -129,6 +129,30 @@
       "date": "2025-06-27T16:15:58.096Z",
       "_id": "9eb06006-7a1e-4948-859e-750f2aedcddd",
       "stationId": "f39d568f-9e9c-490f-9e3e-5207faaedbfe"
+    },
+    {
+      "code": 300,
+      "description": "Drizzle",
+      "iconCode": "09d",
+      "temperature": 45.6,
+      "windSpeed": 65,
+      "windDirection": "N",
+      "pressure": 456,
+      "date": "2025-06-30T10:48:27.444Z",
+      "_id": "5a7b4053-7d52-40ec-9770-c4951471e68c",
+      "stationId": "46dc2999-f122-4071-8822-8a6bf31c530d"
+    },
+    {
+      "code": 801,
+      "description": "Few clouds",
+      "iconCode": "02d",
+      "temperature": 658,
+      "windSpeed": 55,
+      "windDirection": "E",
+      "pressure": 658,
+      "date": "2025-06-30T10:48:40.797Z",
+      "_id": "79502797-e739-4022-8c5f-e5cad7bf7af7",
+      "stationId": "46dc2999-f122-4071-8822-8a6bf31c530d"
     }
   ]
 }

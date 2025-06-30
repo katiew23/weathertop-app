@@ -5,6 +5,8 @@ import fileUpload from "express-fileupload";
 import { engine } from "express-handlebars";
 import { router } from "./routes.js";
 import session from 'express-session';
+import dayjs from "dayjs";
+
 
 const app = express();
 
@@ -39,6 +41,9 @@ app.engine(".hbs", engine({
     },
     lookup: function (obj, field) {
       return obj && obj[field];
+    },
+    formatDateTime: function (dateString) {
+      return dayjs(dateString).format("D MMM YYYY HH:mm");
     }
   }
 }));
