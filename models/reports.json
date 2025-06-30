@@ -153,6 +153,66 @@
       "date": "2025-06-30T10:48:40.797Z",
       "_id": "79502797-e739-4022-8c5f-e5cad7bf7af7",
       "stationId": "46dc2999-f122-4071-8822-8a6bf31c530d"
+    },
+    {
+      "code": 600,
+      "description": "Light snow",
+      "iconCode": "13d",
+      "temperature": 56.3,
+      "windSpeed": 69.6,
+      "windDirection": "SE",
+      "pressure": 456,
+      "date": "2025-06-30T13:15:17.385Z",
+      "_id": "87de2b22-933a-4d4c-89ba-041d05f01ab3",
+      "stationId": "91c91ac0-b0bd-4b4e-b9e3-ea8292202af0"
+    },
+    {
+      "code": 500,
+      "description": "Light rain",
+      "iconCode": "10d",
+      "temperature": 659,
+      "windSpeed": 655,
+      "windDirection": "SW",
+      "pressure": 789,
+      "date": "2025-06-30T13:15:58.619Z",
+      "_id": "17edda83-0128-4600-8829-a1e8a0ae8a19",
+      "stationId": "91c91ac0-b0bd-4b4e-b9e3-ea8292202af0"
+    },
+    {
+      "code": 600,
+      "description": "Light snow",
+      "iconCode": "13d",
+      "temperature": 65,
+      "windSpeed": 75,
+      "windDirection": "E",
+      "pressure": 654,
+      "date": "2025-06-30T13:32:34.201Z",
+      "_id": "1233a040-4e34-4864-b3f1-d039daf55648",
+      "stationId": "0262b6a5-877b-44e8-ba86-a641e54488fd"
+    },
+    {
+      "code": 801,
+      "description": "Few clouds",
+      "iconCode": "02d",
+      "temperature": 69,
+      "windSpeed": 78,
+      "windDirection": "NE",
+      "pressure": 654,
+      "date": "2025-06-30T13:32:47.789Z",
+      "_id": "95495a51-26c9-4cac-933e-40caac2db486",
+      "stationId": "0262b6a5-877b-44e8-ba86-a641e54488fd"
+    },
+    {
+      "code": 300,
+      "description": "Drizzle",
+      "iconCode": "09d",
+      "temperature": 55,
+      "windSpeed": 55,
+      "windDirection": "SW",
+      "pressure": 55,
+      "date": "2025-06-30T14:19:20.311Z",
+      "_id": "84240461-745c-49ae-a6ec-7656602b575d",
+      "stationId": "0262b6a5-877b-44e8-ba86-a641e54488fd"
     }
   ]
 }

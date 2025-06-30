@@ -8,7 +8,7 @@ export const userStore = {
     await db.read();
     return db.data.users;
   },
-
+  
   async addUser(user) {
     await db.read();
     user._id = v4();
@@ -16,24 +16,34 @@ export const userStore = {
     await db.write();
     return user;
   },
-
+  
   async getUserById(id) {
     await db.read();
     return db.data.users.find((user) => user._id === id);
   },
-
+  
   async getUserByEmail(email) {
     await db.read();
     return db.data.users.find((user) => user.email === email);
   },
-
+  
   async deleteUserById(id) {
     await db.read();
     const index = db.data.users.findIndex((user) => user._id === id);
     db.data.users.splice(index, 1);
     await db.write();
   },
-
+  
+  async updateUser(id, updatedData) {
+    await db.read();
+    const user = db.data.users.find((user) => user._id === id);
+    if (user) {
+      Object.assign(user, updatedData);
+      await db.write();
+    }
+    return user;
+  },
+  
   async deleteAll() {
     db.data.users = [];
     await db.write();

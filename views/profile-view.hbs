@@ -1,0 +1,37 @@
+<section class="section">
+  <div class="container" style="max-width: 600px; margin: auto;">
+    <h1 class="title">{{title}}</h1>
+
+    <a href="/dashboard" class="button is-light" style="margin-bottom: 1em;">
+      ← Back to Dashboard
+    </a>
+
+    <form action="/profile/update" method="POST">
+      <div class="field">
+        <label class="label">Name</label>
+        <div class="control">
+          <input class="input" type="text" name="name" value="{{user.name}}" required />
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Email</label>
+        <div class="control">
+          <input class="input" type="email" name="email" value="{{user.email}}" required />
+        </div>
+      </div>
+
+      <div class="field is-grouped">
+        <div class="control">
+          <button class="button is-info" type="submit">Save Changes</button>
+        </div>
+
+        <div class="control">
+          <form action="/profile/delete" method="POST" onsubmit="return confirm('Are you sure you want to delete your account?');">
+            <button class="button is-danger" type="submit">Delete Account</button>
+          </form>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>

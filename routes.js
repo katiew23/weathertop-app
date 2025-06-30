@@ -29,5 +29,10 @@ router.get("/station/:stationid/editreport/:reportid", reportController.index);
 router.post("/station/:stationid/updatereport/:reportid", reportController.update);
 router.get("/about", aboutController.index);
 
+router.get('/profile', accountsController.showProfile);
+router.post('/profile/update', accountsController.updateProfile);
+router.post('/profile/delete', accountsController.deleteProfile);
+
+
 
 

@@ -4,34 +4,49 @@
   <h1 class="title">{{station.title}}</h1>
   <p class="subtitle is-6">📍 Location: {{station.latitude}}, {{station.longitude}}</p>
 
-  {{!— Only show once we have at least one report —}}
   {{#if latestReport}}
-    <div class="box mb-5">
-      <h2 class="subtitle">Latest Report</h2>
-      <div class="columns is-mobile is-vcentered">
-        <div class="column is-narrow has-text-centered">
-          <p><strong>{{latestReport.description}}</strong></p>
-          <img
-            src="http://openweathermap.org/img/wn/{{latestReport.iconCode}}@2x.png"
-            alt="Icon"
-            style="height:80px;width:80px;"
-          />
-        </div>
-        <div class="column">
-          <p><small>Date: {{latestReport.date}}</small></p>
-          <p>🌡️ Temp: {{latestReport.temperature}}°C (Min: {{minTemp}}°C, Max: {{maxTemp}}°C)</p>
-          <p>💨 Wind: {{latestReport.windSpeed}} km/h {{latestReport.windDirection}} (Min: {{minWind}}, Max: {{maxWind}})</p>
-          <p>🌬️ Pressure: {{latestReport.pressure}} hPa (Min: {{minPressure}}, Max: {{maxPressure}})</p>
-        </div>
-      </div>
+  <h2 class="subtitle">Latest Report</h2>
+  <div class="columns is-mobile is-vcentered is-multiline">
+
+    <div class="column has-text-centered tile-card">
+      <p><strong>{{latestReport.description}}</strong></p>
+      <img
+        src="http://openweathermap.org/img/wn/{{latestReport.iconCode}}@2x.png"
+        alt="Icon"
+        style="height: 80px; width: 80px; margin-top: 0.5em;"
+      />
     </div>
-  {{else}}
-    <p>No reports yet for this station.</p>
-  {{/if}}
+
+    <div class="column has-text-centered tile-card">
+      <p><strong>🌡️ Temperature</strong></p>
+      <p>Min: {{minTemp}}°C / Max: {{maxTemp}}°C</p>
+      <p style="font-size: 1.25rem;">{{latestReport.temperature}}°C</p>
+    </div>
+
+    <div class="column has-text-centered tile-card">
+      <p><strong>💨 Wind Speed</strong></p>
+      <p>Min: {{minWind}} km/h / Max: {{maxWind}} km/h</p>
+      <p style="font-size: 1.25rem;">
+        {{latestReport.windSpeed}} km/h {{latestReport.windDirection}}
+      </p>
+    </div>
+
+    <div class="column has-text-centered tile-card">
+      <p><strong>🌬️ Pressure</strong></p>
+      <p>Min: {{minPressure}} hPa / Max: {{maxPressure}} hPa</p>
+      <p style="font-size: 1.25rem;">{{latestReport.pressure}} hPa</p>
+    </div>
+
+  </div>
+{{else}}
+  <p>No reports yet for this station.</p>
+{{/if}}
+
+
 
   <table class="table is-fullwidth is-striped">
     <thead>
-      <tr>
+      <tr style="background-color:#0074D9; color:white;">
         <th>Code</th>
         <th>Icon</th>
         <th>Date/Time</th>
@@ -53,14 +68,18 @@
               style="height:40px;width:40px;"
             />
           </td>
-          <td>{{date}}</td>
+          <td>{{formatDateTime date}}</td>
           <td>{{temperature}}</td>
           <td>{{windSpeed}}</td>
           <td>{{windDirection}}</td>
           <td>{{pressure}}</td>
           <td>
             <a href="/station/{{../station._id}}/editreport/{{_id}}" class="button is-small is-info">Edit</a>
-            <a href="/station/{{../station._id}}/deletereport/{{_id}}" class="button is-small is-danger" onclick="return confirm('Delete this report?')">Delete</a>
+            <a href="/station/{{../station._id}}/deletereport/{{_id}}" class="button is-small is-danger" onclick="return confirm('Delete this report?')">
+              <span class="icon is-small">
+                <i class="fas fa-trash"></i>
+              </span>
+            </a>
           </td>
         </tr>
       {{/each}}

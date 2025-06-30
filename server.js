@@ -44,6 +44,13 @@ app.engine(".hbs", engine({
     },
     formatDateTime: function (dateString) {
       return dayjs(dateString).format("D MMM YYYY HH:mm");
+    },
+    round: function(number) {
+      return Math.round(number);
+    },
+    roundToDecimal: function(number, decimals = 0) {
+      if (typeof number !== 'number') return number;
+      return number.toFixed(decimals);
     }
   }
 }));

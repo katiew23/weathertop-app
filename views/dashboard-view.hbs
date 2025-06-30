@@ -1,6 +1,44 @@
 {{> menu active="dashboard"}}
 
 <section class="section">
-  {{> list-stations}}
+  <h2 class="title is-4" style="margin-bottom: 1.5em;">Welcome, {{user.name}}</h2>
+
+  {{#each stations}}
+  <div class="tile-card" style="margin-bottom: 1.5em;">
+    <h3 class="title is-5">{{this.title}}</h3>
+
+    {{#if this.latestReport}}
+      <div class="columns is-mobile is-vcentered" style="margin-bottom: 0;">
+        <div class="column has-text-centered" style="padding: 1rem;">
+          <img src="https://openweathermap.org/img/wn/{{this.latestReport.iconCode}}@2x.png" alt="Weather icon" style="width:48px;">
+          <p><strong>Weather</strong></p>
+          <p>{{this.latestReport.description}}</p>
+        </div>
+
+        <div class="column has-text-centered" style="padding: 1rem;">
+          <p><strong>🌡️ Temperature</strong></p>
+          <p>{{roundToDecimal this.latestReport.temperature 1}}°C</p>
+        </div>
+
+        <div class="column has-text-centered" style="padding: 1rem;">
+          <p><strong>💨 Wind Speed</strong></p>
+          <p>{{roundToDecimal this.latestReport.windSpeed 1}} km/h</p>
+        </div>
+
+        <div class="column has-text-centered" style="padding: 1rem;">
+          <p><strong>📊 Pressure</strong></p>
+          <p>{{roundToDecimal this.latestReport.pressure 1}} hPa</p>
+        </div>
+      </div>
+    {{else}}
+      <p>No reports available.</p>
+    {{/if}}
+
+    <a href="/station/{{this._id}}" class="button is-small is-info" style="margin-top: 0.5em;">View Station</a>
+    <a href="/dashboard/deletestation/{{this._id}}" class="button is-small is-danger" style="margin-top: 0.5em;">Delete Station</a>
+  </div>
+{{/each}}
+
+
   {{> add-stations}}
 </section>

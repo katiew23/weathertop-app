@@ -7,33 +7,33 @@ export const accountsController = {
     };
     response.render("index", viewData);
   },
-
+  
   login(request, response) {
     const viewData = {
       title: "Login to WeatherTop",
     };
     response.render("login-view", viewData);
   },
-
+  
   logout(request, response) {
     request.session.userid = null;  
     response.redirect("/");
   },
-
+  
   signup(request, response) {
     const viewData = {
       title: "Signup to WeatherTop",
     };
     response.render("signup-view", viewData);
   },
-
+  
   async register(request, response) {
     const user = request.body;
     await userStore.addUser(user);
     console.log(`Registering ${user.email}`);
     response.redirect("/");
   },
-
+  
   async authenticate(request, response) {
     const user = await userStore.getUserByEmail(request.body.email);
     if (user) {
@@ -44,9 +44,47 @@ export const accountsController = {
       response.redirect("/login");
     }
   },
-
+  
   async getLoggedInUser(request) {
     const userId = request.session.userid;  
     return await userStore.getUserById(userId);  
+  },
+  
+  async showProfile(request, response) {
+    const loggedInUser = await accountsController.getLoggedInUser(request);
+    if (!loggedInUser) {
+      return response.redirect('/login');
+    }
+    response.render('profile-view', { title: 'Your Profile', user: loggedInUser });
+  },
+  
+  async updateProfile(request, response) {
+    const loggedInUser = await accountsController.getLoggedInUser(request);
+    if (!loggedInUser) {
+      return response.redirect('/login');
+    }
+    
+    console.log("Updating profile for user:", loggedInUser._id);
+    console.log("New data:", request.body);
+    
+    const updatedData = {
+      name: request.body.name,
+      email: request.body.email,
+    };
+    
+    await userStore.updateUser(loggedInUser._id, updatedData);
+    response.redirect('/profile');
+  },
+  
+  async deleteProfile(request, response) {
+    const loggedInUser = await accountsController.getLoggedInUser(request);
+    if (!loggedInUser) {
+      return response.redirect('/login');
+    }
+    
+    await userStore.deleteUserById(loggedInUser._id);
+    request.session.destroy(() => {
+      response.redirect('/');
+    });
   }
 };
