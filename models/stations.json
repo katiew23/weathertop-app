@@ -2,24 +2,6 @@
   "file": "./models/stations.json",
   "stations": [
     {
-      "title": "Clonmel ",
-      "location": "Tipperary",
-      "userid": "17a48544-d54e-4096-a176-2bfa13444a42",
-      "_id": "d24e5a92-0be8-4794-b93a-856a9aaf0e39"
-    },
-    {
-      "title": "Wexford",
-      "location": "Courtown",
-      "userid": "17a48544-d54e-4096-a176-2bfa13444a42",
-      "_id": "0f9d9541-01f4-4c06-a5b8-595f04bb2b96"
-    },
-    {
-      "title": "Tramore",
-      "location": "Waterford",
-      "userid": "17a48544-d54e-4096-a176-2bfa13444a42",
-      "_id": "46dc2999-f122-4071-8822-8a6bf31c530d"
-    },
-    {
       "title": "Kate Williams Assignment 1 Programming",
       "location": "Tipperary",
       "userid": "8065057f-8fdb-47e0-b586-c6f5fcb526a3",
@@ -36,6 +18,22 @@
       "location": "Tipperary",
       "userid": "13d4f490-ad09-4a3e-ae94-fe13da41814b",
       "_id": "0262b6a5-877b-44e8-ba86-a641e54488fd"
+    },
+    {
+      "title": "Clonmel ",
+      "location": "Waterford",
+      "longitude": -7.703,
+      "latitude": 52.35,
+      "userid": "17a48544-d54e-4096-a176-2bfa13444a42",
+      "_id": "a58c4ced-ce25-404f-b125-06680a79948a"
+    },
+    {
+      "title": "Tramore",
+      "location": "Waterford",
+      "longitude": 7.1464,
+      "latitude": 52.1589,
+      "userid": "17a48544-d54e-4096-a176-2bfa13444a42",
+      "_id": "0147da6f-de38-4802-a907-1eb3a80293b0"
     }
   ]
 }

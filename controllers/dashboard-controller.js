@@ -10,7 +10,7 @@ export const dashboardController = {
     let stations = await stationStore.getStationsByUserId(loggedInUser._id);
     stations.sort((a, b) => a.title.toLowerCase().localeCompare(b.title.toLowerCase()));
 
-    // Get the latest report for each station
+   
     const stationsWithLatestReport = await Promise.all(stations.map(async (station) => {
       const reports = await reportStore.getReportsByStationId(station._id);
       const latestReport = reports.length ? reports[reports.length - 1] : null;
@@ -35,6 +35,8 @@ export const dashboardController = {
     const newStation = {
       title: request.body.title,
       location: request.body.location,
+      longitude: Number(request.body.longitude),
+      latitude: Number(request.body.latitude),
       userid: loggedInUser._id,
     };
     console.log(`Adding station: ${newStation.title}`);

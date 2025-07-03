@@ -4,9 +4,7 @@
   <h1 class="title">{{station.title}}</h1>
   <p class="subtitle is-6">📍 Location: {{station.latitude}}, {{station.longitude}}</p>
 
-  
   {{#if reports.length}}
-    
     <div class="box mb-5">
       <div class="columns is-multiline is-mobile is-vcentered">
         <div class="column is-one-fifth has-text-centered">
@@ -50,7 +48,6 @@
       </div>
     </div>
 
-   
     <div class="box mb-5">
       <h2 class="subtitle">Latest Report</h2>
       <div class="columns is-mobile is-vcentered">
@@ -67,47 +64,67 @@
         </div>
       </div>
     </div>
-
   {{else}}
     <p>No reports yet for this station.</p>
   {{/if}}
 
   <table class="table is-fullwidth is-striped">
-  <thead>
-    <tr>
-      <th>Code</th>
-      <th>Icon</th>
-      <th>Date/Time</th> <!-- New column -->
-      <th>Temperature (°C)</th>
-      <th>Wind Speed (km/h)</th>
-      <th>Wind Direction</th>
-      <th>Pressure (hPa)</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    {{#each reports}}
+    <thead>
       <tr>
-        <td>{{code}}</td>
-        <td>
-          <img src="http://openweathermap.org/img/wn/{{iconCode}}@2x.png"
-               alt="Icon"
-               style="height:40px;width:40px;">
-        </td>
-        <td>{{formatDateTime date}}</td> 
-        <td>{{temperature}}</td>
-        <td>{{windSpeed}}</td>
-        <td>{{windDirection}}</td>
-        <td>{{pressure}}</td>
-        <td>
-          <a href="/station/{{../station._id}}/editreport/{{_id}}" class="button is-small is-info">Edit</a>
-          <a href="/station/{{../station._id}}/deletereport/{{_id}}" class="button is-small is-danger" onclick="return confirm('Delete this report?')">Delete</a>
-        </td>
+        <th>Code</th>
+        <th>Icon</th>
+        <th>Date/Time</th>
+        <th>Temperature (°C)</th>
+        <th>Wind Speed (km/h)</th>
+        <th>Wind Direction</th>
+        <th>Pressure (hPa)</th>
+        <th>Actions</th>
       </tr>
-    {{/each}}
-  </tbody>
-</table>
-
+    </thead>
+    <tbody>
+      {{#each reports}}
+        <tr>
+          <td>{{code}}</td>
+          <td>
+            <img src="http://openweathermap.org/img/wn/{{iconCode}}@2x.png"
+                 alt="Icon"
+                 style="height:40px;width:40px;">
+          </td>
+          <td>{{formatDateTime date}}</td> 
+          <td>{{temperature}}</td>
+          <td>{{windSpeed}}</td>
+          <td>{{windDirection}}</td>
+          <td>{{pressure}}</td>
+          <td>
+            <a href="/station/{{../station._id}}/editreport/{{_id}}" class="button is-small is-info">Edit</a>
+            <a href="/station/{{../station._id}}/deletereport/{{_id}}" class="button is-small is-danger" onclick="return confirm('Delete this report?')">Delete</a>
+          </td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
 
   {{> add-report}}
+
+  
+  <button id="autoGenerateBtn" class="button is-danger" style="margin-top: 1em;">Auto Generate Reading</button>
 </section>
+
+<script>
+  const stationId = "{{station._id}}";
+
+document.getElementById('autoGenerateBtn').addEventListener('click', async () => {
+  try {
+    const response = await fetch(`/station/${stationId}/report/live`, { method: 'POST' }); // <-- add method: 'POST'
+    if (!response.ok) throw new Error('Failed to fetch live weather data');
+
+    const liveReport = await response.json();
+    
+    window.location.reload();
+  } catch (error) {
+    alert('Error auto-generating report: ' + error.message);
+    console.error(error);
+  }
+});
+
+</script>

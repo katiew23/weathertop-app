@@ -213,6 +213,216 @@
       "date": "2025-06-30T14:19:20.311Z",
       "_id": "84240461-745c-49ae-a6ec-7656602b575d",
       "stationId": "0262b6a5-877b-44e8-ba86-a641e54488fd"
+    },
+    {
+      "code": 804,
+      "iconCode": "04d",
+      "temperature": 19.04,
+      "windSpeed": 4.79,
+      "windDirection": 266,
+      "pressure": 1028,
+      "_id": "f452fb5c-b7e4-460e-8579-7922a4a53d46",
+      "stationId": "97034d50-a35a-43a1-a810-ec2b2a4f499e"
+    },
+    {
+      "code": 804,
+      "iconCode": "04d",
+      "temperature": 19.04,
+      "windSpeed": 4.79,
+      "windDirection": 266,
+      "pressure": 1028,
+      "_id": "dbbe82e5-9e53-44de-a341-0b7c36609c20",
+      "stationId": "97034d50-a35a-43a1-a810-ec2b2a4f499e"
+    },
+    {
+      "code": 804,
+      "iconCode": "04d",
+      "temperature": 19.04,
+      "windSpeed": 4.79,
+      "windDirection": 266,
+      "pressure": 1028,
+      "_id": "1184b07e-84ef-4c76-8f7d-42b205f9c9e4",
+      "stationId": "97034d50-a35a-43a1-a810-ec2b2a4f499e"
+    },
+    {
+      "code": 804,
+      "iconCode": "04d",
+      "temperature": 19.04,
+      "windSpeed": 4.79,
+      "windDirection": 266,
+      "pressure": 1028,
+      "_id": "b2136779-735c-4ccd-bff2-00ac19139114",
+      "stationId": "97034d50-a35a-43a1-a810-ec2b2a4f499e"
+    },
+    {
+      "code": 804,
+      "iconCode": "04d",
+      "temperature": 19.04,
+      "windSpeed": 4.79,
+      "windDirection": 266,
+      "pressure": 1028,
+      "_id": "e62cca41-f957-4a00-a975-2cfc03f3f9f4",
+      "stationId": "97034d50-a35a-43a1-a810-ec2b2a4f499e"
+    },
+    {
+      "code": 804,
+      "iconCode": "04d",
+      "temperature": 19.04,
+      "windSpeed": 4.79,
+      "windDirection": 266,
+      "pressure": 1028,
+      "_id": "01aa286f-6a81-4231-8e53-fbd87dfd9629",
+      "stationId": "97034d50-a35a-43a1-a810-ec2b2a4f499e"
+    },
+    {
+      "code": 804,
+      "iconCode": "04d",
+      "temperature": 19.04,
+      "windSpeed": 4.79,
+      "windDirection": 266,
+      "pressure": 1028,
+      "_id": "a461932c-bc60-4119-b4df-4cad9375467e",
+      "stationId": "97034d50-a35a-43a1-a810-ec2b2a4f499e"
+    },
+    {
+      "code": 804,
+      "iconCode": "04d",
+      "temperature": 19.04,
+      "windSpeed": 4.79,
+      "windDirection": 266,
+      "pressure": 1028,
+      "_id": "cac8b4f4-c777-4622-b2be-5a907f464242",
+      "stationId": "97034d50-a35a-43a1-a810-ec2b2a4f499e"
+    },
+    {
+      "code": 804,
+      "iconCode": "04d",
+      "temperature": 19.17,
+      "windSpeed": 4.79,
+      "windDirection": 266,
+      "pressure": 1028,
+      "_id": "525a6cde-9c26-44d6-aea5-627930ff5cb0",
+      "stationId": "97034d50-a35a-43a1-a810-ec2b2a4f499e"
+    },
+    {
+      "code": 804,
+      "iconCode": "04d",
+      "temperature": 19.17,
+      "windSpeed": 4.79,
+      "windDirection": 266,
+      "pressure": 1028,
+      "_id": "8073a09e-32ae-4604-a1c8-dbe82a1d089b",
+      "stationId": "051d761c-c2cd-4dfd-98f0-9463190e4712"
+    },
+    {
+      "code": 804,
+      "iconCode": "04d",
+      "temperature": 19.17,
+      "windSpeed": 4.79,
+      "windDirection": 266,
+      "pressure": 1028,
+      "_id": "054b5ae7-105d-41f2-aab9-e11aa1ed4687",
+      "stationId": "051d761c-c2cd-4dfd-98f0-9463190e4712"
+    },
+    {
+      "code": 804,
+      "iconCode": "04d",
+      "temperature": 19.17,
+      "windSpeed": 4.79,
+      "windDirection": 266,
+      "pressure": 1028,
+      "_id": "6d6b615d-bc95-4399-8ecf-c341274ab80b",
+      "stationId": "051d761c-c2cd-4dfd-98f0-9463190e4712"
+    },
+    {
+      "code": 804,
+      "iconCode": "04d",
+      "temperature": 19.17,
+      "windSpeed": 4.79,
+      "windDirection": 266,
+      "pressure": 1028,
+      "_id": "45270130-661c-4d1f-9f68-18cdcb0ae971",
+      "stationId": "051d761c-c2cd-4dfd-98f0-9463190e4712"
+    },
+    {
+      "code": 804,
+      "iconCode": "04d",
+      "temperature": 19.17,
+      "windSpeed": 4.79,
+      "windDirection": 266,
+      "pressure": 1028,
+      "_id": "53512b4b-ff34-4e7c-8076-7344ad8680c1",
+      "stationId": "2e867906-1928-46b4-8806-4f47a21612e9"
+    },
+    {
+      "code": 200,
+      "description": "Thunderstorm with light rain",
+      "iconCode": "11d",
+      "temperature": 19.2,
+      "windSpeed": 4.8,
+      "windDirection": "S",
+      "pressure": 1028,
+      "date": "2025-07-03T14:10:07.411Z",
+      "_id": "2d555136-36f3-4278-a7bc-53d94bd19825",
+      "stationId": "2e867906-1928-46b4-8806-4f47a21612e9"
+    },
+    {
+      "code": 804,
+      "iconCode": "04d",
+      "temperature": 19.17,
+      "windSpeed": 4.79,
+      "windDirection": 266,
+      "pressure": 1028,
+      "_id": "b50fd7b7-0af2-4bce-b0af-7ce61f4ed326",
+      "stationId": "2e867906-1928-46b4-8806-4f47a21612e9"
+    },
+    {
+      "code": 200,
+      "description": "Thunderstorm with light rain",
+      "iconCode": "11d",
+      "temperature": 19.2,
+      "windSpeed": 4.8,
+      "windDirection": "S",
+      "pressure": 1028,
+      "date": "2025-07-03T14:11:13.640Z",
+      "_id": "d491c65d-77fd-45d9-b509-cba217c00ad4",
+      "stationId": "a58c4ced-ce25-404f-b125-06680a79948a"
+    },
+    {
+      "code": 500,
+      "description": "Light rain",
+      "iconCode": "10d",
+      "temperature": 21.2,
+      "windSpeed": 2.4,
+      "windDirection": "SW",
+      "pressure": 1026,
+      "date": "2025-07-03T14:13:49.305Z",
+      "_id": "884ec765-a559-472f-b603-55d25590774a",
+      "stationId": "0147da6f-de38-4802-a907-1eb3a80293b0"
+    },
+    {
+      "code": 802,
+      "iconCode": "03d",
+      "description": "scattered clouds",
+      "temperature": 22.4,
+      "windSpeed": "8.78",
+      "windDirection": "NW",
+      "pressure": 1025,
+      "date": "2025-07-03T14:32:36.392Z",
+      "_id": "b69e2543-8ad0-48a6-bd56-84474b352c3a",
+      "stationId": "0147da6f-de38-4802-a907-1eb3a80293b0"
+    },
+    {
+      "code": 804,
+      "iconCode": "04d",
+      "description": "overcast clouds",
+      "temperature": 19.65,
+      "windSpeed": "19.91",
+      "windDirection": "W",
+      "pressure": 1028,
+      "date": "2025-07-03T14:32:46.948Z",
+      "_id": "d12d14fd-16e1-428e-a2bc-590f4a0d0eb2",
+      "stationId": "a58c4ced-ce25-404f-b125-06680a79948a"
     }
   ]
 }
