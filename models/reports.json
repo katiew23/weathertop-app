@@ -716,6 +716,18 @@
       "date": "2025-07-04T12:53:47.018Z",
       "_id": "146d2db9-152e-48c1-b10a-20cc0960ffeb",
       "stationId": "18d8dea4-a0fb-4959-813f-aa8389457aac"
+    },
+    {
+      "code": 800,
+      "description": "Clear sky",
+      "iconCode": "01d",
+      "temperature": 13.2,
+      "windSpeed": 18.9,
+      "windDirection": "S",
+      "pressure": 989.7,
+      "date": "2025-07-04T13:12:01.753Z",
+      "_id": "7eb63723-96a5-45a7-a7ba-5455ef6b4485",
+      "stationId": "9ec9e886-29fb-478e-9ccf-c93b284eb720"
     }
   ]
 }
