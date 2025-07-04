@@ -35,13 +35,11 @@ function computeSummary(reports) {
 export const stationController = {
   
   async index(request, response) {
-    console.log("🚀 stationController.index hit for station id:", request.params.id);
     const station = await stationStore.getStationById(request.params.id);
     if (!station) {
       return response.status(404).send("Station not found");
     }
     const reports = await reportStore.getReportsByStationId(station._id);
-    console.log("📑 reports in index:", reports);
     const summary = computeSummary(reports);
     const latestReport = reports.length ? reports[reports.length - 1] : null;
     const weatherCodes = [
@@ -53,7 +51,7 @@ export const stationController = {
       { code: 801, description: "Few clouds" },
     ];
     response.render("station-view", {
-      title:       station.title,
+      title:       `${station.title_en} / ${station.title_ga}`,
       station,
       reports,
       weatherCodes,
@@ -63,32 +61,24 @@ export const stationController = {
   },
   
   async addReport(request, response) {
-    console.log("🔥 addReport hit –", request.method, request.url, "body:", request.body);
-    try {
-      const station = await stationStore.getStationById(request.params.id);
-      if (!station) {
-        return response.status(404).send("Station not found");
-      }
-      const code = Number(request.body.code);
-      const info = weatherCodeMap[code] || { description: "Unknown", iconCode: "01d" };
-      const newReport = {
-        code,
-        description:   info.description,
-        iconCode:      info.iconCode,
-        temperature:   Number(request.body.temperature),
-        windSpeed:     Number(request.body.windSpeed),
-        windDirection: request.body.windDirection,
-        pressure:      Number(request.body.pressure),
-        date:          new Date().toISOString(),
-      };
-      console.log("🕒 newReport:", newReport);
-      await reportStore.addReport(station._id, newReport);
-      response.redirect(`/station/${station._id}`);
+    const station = await stationStore.getStationById(request.params.id);
+    if (!station) {
+      return response.status(404).send("Station not found");
     }
-    catch (err) {
-      console.error("❌ addReport error:", err);
-      response.status(500).send("Internal Error");
-    }
+    const code = Number(request.body.code);
+    const info = weatherCodeMap[code] || { description: "Unknown", iconCode: "01d" };
+    const newReport = {
+      code,
+      description:   info.description,
+      iconCode:      info.iconCode,
+      temperature:   Number(request.body.temperature),
+      windSpeed:     Number(request.body.windSpeed),
+      windDirection: request.body.windDirection,
+      pressure:      Number(request.body.pressure),
+      date:          new Date().toISOString(),
+    };
+    await reportStore.addReport(station._id, newReport);
+    response.redirect(`/station/${station._id}`);
   },
   
   async deleteReport(request, response) {
@@ -98,7 +88,8 @@ export const stationController = {
   
   async addStation(request, response) {
     const newStation = {
-      title:     request.body.title,
+      title_en:  request.body.title_en,
+      title_ga:  request.body.title_ga,
       latitude:  Number(request.body.latitude),
       longitude: Number(request.body.longitude),
       userid:    request.session.userid,
@@ -109,24 +100,18 @@ export const stationController = {
   
   async trends(request, response) {
     const stationId = request.params.id;
-    console.log("Fetching trends for station id:", stationId);
     const station = await stationStore.getStationById(stationId);
-    
     if (!station) {
-      console.log("Station not found for id:", stationId);
       return response.status(404).send("Station not found");
     }
-    
     const reports = await reportStore.getReportsByStationId(stationId);
     reports.sort((a, b) => new Date(a.date) - new Date(b.date));
-    
     const dates = reports.map(r => new Date(r.date).toLocaleDateString());
     const temperatures = reports.map(r => r.temperature);
     const winds = reports.map(r => r.windSpeed);
     const pressures = reports.map(r => r.pressure);
-    
     response.render('trends-view', { 
-      title: `Trends for ${station.title}`,
+      title: `Trends for ${station.title_en} / ${station.title_ga}`,
       station,
       dates: JSON.stringify(dates),
       temperatures: JSON.stringify(temperatures),
@@ -137,24 +122,18 @@ export const stationController = {
   
   async autoGenerateReport(request, response) {
     const stationId = request.params.stationid;
-    try {
-      const directions = ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW'];
-      const generatedReport = {
-        code: 800,
-        description: 'Clear sky',
-        iconCode: '01d',
-        temperature: parseFloat((Math.random() * 15 + 5).toFixed(1)),
-        windSpeed: parseFloat((Math.random() * 20).toFixed(1)),
-        windDirection: directions[Math.floor(Math.random() * directions.length)],
-        pressure: parseFloat((980 + Math.random() * 40).toFixed(1)),
-        date: new Date().toISOString(),
-      };
-      
-      await reportStore.addReport(stationId, generatedReport);
-      response.json(generatedReport);
-    } catch (error) {
-      console.error("Error auto-generating report:", error);
-      response.status(500).send("Failed to auto-generate report");
-    }
+    const directions = ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW'];
+    const generatedReport = {
+      code: 800,
+      description: 'Clear sky',
+      iconCode: '01d',
+      temperature: parseFloat((Math.random() * 15 + 5).toFixed(1)),
+      windSpeed: parseFloat((Math.random() * 20).toFixed(1)),
+      windDirection: directions[Math.floor(Math.random() * directions.length)],
+      pressure: parseFloat((980 + Math.random() * 40).toFixed(1)),
+      date: new Date().toISOString(),
+    };
+    await reportStore.addReport(stationId, generatedReport);
+    response.json(generatedReport);
   }
 };

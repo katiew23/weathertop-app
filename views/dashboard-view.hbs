@@ -67,7 +67,7 @@
     if (station.latitude && station.longitude) {
       const marker = L.marker([station.latitude, station.longitude])
         .addTo(map)
-        .bindPopup(station.title);
+        .bindPopup(`${station.title_en} / ${station.title_ga}`);
       markers.push(marker);
     }
   });

@@ -2,21 +2,6 @@
   "file": "./models/users.json",
   "users": [
     {
-      "firstName": "lucy",
-      "lastName": "williams",
-      "email": "sba23115@student.cct.ie",
-      "password": "lucy123",
-      "_id": "8065057f-8fdb-47e0-b586-c6f5fcb526a3"
-    },
-    {
-      "firstName": "lucy",
-      "lastName": "williams",
-      "email": "katiew2336@gmail.com",
-      "password": "kate123",
-      "_id": "17a48544-d54e-4096-a176-2bfa13444a42",
-      "name": "Lucy"
-    },
-    {
       "firstName": "kate",
       "lastName": "kate",
       "email": "sba23115@student.cct.ie",
@@ -26,10 +11,10 @@
     {
       "firstName": "kate",
       "lastName": "williams",
-      "email": "katiew23@gmail.com",
+      "email": "katiew2336@gmail.com",
       "password": "kate123",
-      "_id": "13d4f490-ad09-4a3e-ae94-fe13da41814b",
-      "name": "Tim"
+      "_id": "5c503fed-a657-4af9-a521-16926b4c8365",
+      "name": "Kate"
     }
   ]
 }
