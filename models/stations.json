@@ -38,6 +38,14 @@
       "latitude": 52.272486,
       "userid": "13d4f490-ad09-4a3e-ae94-fe13da41814b",
       "_id": "9ec9e886-29fb-478e-9ccf-c93b284eb720"
+    },
+    {
+      "title": "New york",
+      "location": "new york ",
+      "longitude": -74.006,
+      "latitude": 40.7128,
+      "userid": "13d4f490-ad09-4a3e-ae94-fe13da41814b",
+      "_id": "18d8dea4-a0fb-4959-813f-aa8389457aac"
     }
   ]
 }

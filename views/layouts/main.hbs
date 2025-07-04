@@ -168,6 +168,30 @@
       border-radius: 8px;
       box-shadow: 0 0 15px rgba(255,255,255,0.1);
     }
+
+    /* Responsive tweaks */
+    @media (max-width: 768px) {
+      .container {
+        padding: 1em;
+      }
+
+      .tile-card {
+        padding: 1em;
+        margin-bottom: 1em;
+      }
+
+      /* Make tables scroll horizontally */
+      table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+      }
+
+      /* Adjust section padding */
+      section.section {
+        padding: 1.5em 0;
+      }
+    }
   </style>
 </head>
 

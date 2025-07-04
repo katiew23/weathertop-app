@@ -680,6 +680,42 @@
       "date": "2025-07-04T11:54:13.112Z",
       "_id": "559675d5-2f18-454b-9656-b7ca4a0c359f",
       "stationId": "9ec9e886-29fb-478e-9ccf-c93b284eb720"
+    },
+    {
+      "code": 800,
+      "description": "Clear sky",
+      "iconCode": "01d",
+      "temperature": 10.9,
+      "windSpeed": 16,
+      "windDirection": "SE",
+      "pressure": 996.4,
+      "date": "2025-07-04T11:56:27.681Z",
+      "_id": "c05af46b-afb5-4a33-9d76-c24e3dfa976d",
+      "stationId": "0c5b716f-16aa-4e1a-abdf-0c034a933b00"
+    },
+    {
+      "code": 800,
+      "description": "Clear sky",
+      "iconCode": "01d",
+      "temperature": 11.8,
+      "windSpeed": 3.9,
+      "windDirection": "W",
+      "pressure": 1006,
+      "date": "2025-07-04T12:52:15.265Z",
+      "_id": "9efa102e-7774-4e47-8892-f71c2d378ac6",
+      "stationId": "9ec9e886-29fb-478e-9ccf-c93b284eb720"
+    },
+    {
+      "code": 800,
+      "description": "Clear sky",
+      "iconCode": "01d",
+      "temperature": 7.7,
+      "windSpeed": 13.9,
+      "windDirection": "NE",
+      "pressure": 991.2,
+      "date": "2025-07-04T12:53:47.018Z",
+      "_id": "146d2db9-152e-48c1-b10a-20cc0960ffeb",
+      "stationId": "18d8dea4-a0fb-4959-813f-aa8389457aac"
     }
   ]
 }
