@@ -1,0 +1,87 @@
+{{> menu}}
+
+<section class="section">
+  <h1 class="title">Temperature, Wind Speed & Pressure Trends for {{station.title}}</h1>
+  
+  <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+    <canvas id="tempChart" style="flex: 1; min-width: 300px; max-width: 32%; height: 300px;"></canvas>
+    <canvas id="windChart" style="flex: 1; min-width: 300px; max-width: 32%; height: 300px;"></canvas>
+    <canvas id="pressureChart" style="flex: 1; min-width: 300px; max-width: 32%; height: 300px;"></canvas>
+  </div>
+
+  <a href="/station/{{station._id}}" class="button is-link" style="margin-top: 1em;">Back to Station</a>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  const labels = {{{dates}}};
+  const temps = {{{temperatures}}};
+  const winds = {{{winds}}};
+  const pressures = {{{pressures}}};
+
+  const ctxTemp = document.getElementById('tempChart').getContext('2d');
+  new Chart(ctxTemp, {
+    type: 'line',
+    data: {
+      labels: labels,
+      datasets: [{
+        label: 'Temperature (°C)',
+        data: temps,
+        fill: false,
+        borderColor: 'blue',
+        tension: 0.1
+      }]
+    },
+    options: {
+      scales: {
+        x: { title: { display: true, text: 'Date' } },
+        y: { title: { display: true, text: 'Temperature (°C)' } }
+      },
+      maintainAspectRatio: false
+    }
+  });
+
+  const ctxWind = document.getElementById('windChart').getContext('2d');
+  new Chart(ctxWind, {
+    type: 'line',
+    data: {
+      labels: labels,
+      datasets: [{
+        label: 'Wind Speed (km/h)',
+        data: winds,
+        fill: false,
+        borderColor: 'green',
+        tension: 0.1
+      }]
+    },
+    options: {
+      scales: {
+        x: { title: { display: true, text: 'Date' } },
+        y: { title: { display: true, text: 'Wind Speed (km/h)' } }
+      },
+      maintainAspectRatio: false
+    }
+  });
+
+  const ctxPressure = document.getElementById('pressureChart').getContext('2d');
+  new Chart(ctxPressure, {
+    type: 'line',
+    data: {
+      labels: labels,
+      datasets: [{
+        label: 'Pressure (hPa)',
+        data: pressures,
+        fill: false,
+        borderColor: 'purple',
+        tension: 0.1
+      }]
+    },
+    options: {
+      scales: {
+        x: { title: { display: true, text: 'Date' } },
+        y: { title: { display: true, text: 'Pressure (hPa)' } }
+      },
+      maintainAspectRatio: false
+    }
+  });
+</script>

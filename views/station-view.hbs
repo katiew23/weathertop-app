@@ -4,6 +4,8 @@
   <h1 class="title">{{station.title}}</h1>
   <p class="subtitle is-6">📍 Location: {{station.latitude}}, {{station.longitude}}</p>
 
+  <div id="map" style="height: 400px; margin-top: 1em;"></div>
+
   {{#if reports.length}}
     <div class="box mb-5">
       <div class="columns is-multiline is-mobile is-vcentered">
@@ -106,25 +108,42 @@
 
   {{> add-report}}
 
-  
   <button id="autoGenerateBtn" class="button is-danger" style="margin-top: 1em;">Auto Generate Reading</button>
+  <a href="/station/{{station._id}}/trends" class="button is-info" style="margin-top: 1em;">View Temperature Trends</a>
 </section>
+
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/leaflet/dist/leaflet.css"
+/>
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
 <script>
   const stationId = "{{station._id}}";
 
-document.getElementById('autoGenerateBtn').addEventListener('click', async () => {
-  try {
-    const response = await fetch(`/station/${stationId}/report/live`, { method: 'POST' }); // <-- add method: 'POST'
-    if (!response.ok) throw new Error('Failed to fetch live weather data');
+  document.getElementById('autoGenerateBtn').addEventListener('click', async () => {
+    try {
+      const response = await fetch(`/station/${stationId}/report/live`, { method: 'POST' });
+      if (!response.ok) throw new Error('Failed to fetch live weather data');
 
-    const liveReport = await response.json();
-    
-    window.location.reload();
-  } catch (error) {
-    alert('Error auto-generating report: ' + error.message);
-    console.error(error);
-  }
-});
+      await response.json();
+      window.location.reload();
+    } catch (error) {
+      alert('Error auto-generating report: ' + error.message);
+      console.error(error);
+    }
+  });
 
+  const lat = {{station.latitude}};
+  const lng = {{station.longitude}};
+
+  const map = L.map('map').setView([lat, lng], 13);
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors'
+  }).addTo(map);
+
+  L.marker([lat, lng]).addTo(map)
+    .bindPopup('{{station.title}}')
+    .openPopup();
 </script>

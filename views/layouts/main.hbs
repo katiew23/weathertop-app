@@ -15,54 +15,158 @@
   />
 
   <style>
-    .box > h3.title {
-      color: white !important;
-      font-weight: 600;
-      text-shadow: 0 0 3px rgba(0,0,0,0.7);
+    body {
+      background-color: #000;
+      color: #eee;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
-    .custom-logo {
-      height: 600px;
-      width: auto;
+    .container {
+      background-color: #111;
+      padding: 2em;
+      border-radius: 8px;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+      min-height: 100vh;
     }
 
     .navbar {
+      background-color: #111 !important;
+      border-bottom: 1px solid #222;
       min-height: 100px;
       align-items: center;
+      color: white !important;
+    }
+
+    /* Navbar buttons grey style */
+    .navbar .button {
+      background-color: #555 !important;
+      color: #eee !important;
+      border-color: #666 !important;
+    }
+
+    .navbar .button.is-active,
+    .navbar .button:hover {
+      background-color: #777 !important;
+      color: white !important;
+      border-color: #888 !important;
+    }
+
+    h1.title,
+    h2.title,
+    h3.title,
+    p.subtitle,
+    p.help-text,
+    .section,
+    .container {
+      color: #eee !important;
     }
 
     .tile-card {
-      background-color: #1a1a1a !important;
-      color: white !important;
+      background-color: #222 !important;
+      color: #eee !important;
       padding: 1.5em;
-      border-radius: 6px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
-      margin-bottom: 1em;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
+      margin-bottom: 2em;
       font-weight: 600;
-      text-shadow: 0 0 3px rgba(0, 0, 0, 0.7);
+      text-shadow: 0 0 6px rgba(255, 255, 255, 0.1);
+    }
+
+    .tile-card h3.title {
+      color: #fff !important;
+      font-weight: 700;
+      text-shadow: 0 0 6px rgba(255, 255, 255, 0.3);
     }
 
     .tile-card strong,
     .tile-card p {
-      color: #fff !important;
+      color: #ddd !important;
       font-weight: 600;
-      text-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
-    }
-    .tile-card h3.title {
-      color: white !important;
-      font-weight: 600;
-      text-shadow: 0 0 3px rgba(0,0,0,0.7);
-   }
-
-
-    .columns.is-multiline {
-      background: transparent !important;
+      text-shadow: 0 0 3px rgba(255, 255, 255, 0.1);
     }
 
-    .columns.is-mobile.is-vcentered > .column,
-    .columns.is-mobile.is-vcentered.is-multiline > .column {
-      background: transparent !important;
-      padding: 0 !important;
+    .button.is-link {
+      background-color: #444;
+      border-color: #555;
+      color: #eee;
+      transition: background-color 0.3s ease;
+    }
+    .button.is-link:hover {
+      background-color: #666;
+      color: white;
+    }
+
+    .button.is-danger {
+      background-color: #aa2222;
+      border-color: #bb3333;
+      color: #eee;
+    }
+    .button.is-danger:hover {
+      background-color: #cc4444;
+      color: white;
+    }
+
+    a {
+      color: #4a90e2;
+    }
+    a:hover {
+      color: #66b3ff;
+      text-decoration: underline;
+    }
+
+    section.section {
+      padding: 3em 0;
+    }
+
+    .help-text,
+    label {
+      color: #ddd !important;
+    }
+
+    input::placeholder {
+      color: #bbb !important;
+    }
+
+    input, select, textarea {
+      background-color: #222;
+      border: 1px solid #555;
+      color: #eee;
+      padding: 0.5em;
+      border-radius: 5px;
+      width: 100%;
+      box-sizing: border-box;
+      margin-bottom: 1.2em;
+      transition: border-color 0.3s ease;
+    }
+    input:focus, select:focus, textarea:focus {
+      border-color: #4a90e2;
+      outline: none;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      color: #eee;
+    }
+    th, td {
+      border: 1px solid #444;
+      padding: 0.7em 1em;
+      text-align: left;
+    }
+    thead {
+      background-color: #222;
+    }
+    tbody tr:nth-child(even) {
+      background-color: #1a1a1a;
+    }
+    tbody tr:hover {
+      background-color: #333;
+    }
+
+    canvas {
+      background-color: #111;
+      border-radius: 8px;
+      box-shadow: 0 0 15px rgba(255,255,255,0.1);
     }
   </style>
 </head>
@@ -71,5 +175,6 @@
   <div class="container">
     {{{body}}}
   </div>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </body>
 </html>

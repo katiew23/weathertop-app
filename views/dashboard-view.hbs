@@ -3,6 +3,8 @@
 <section class="section">
   <h2 class="title is-4" style="margin-bottom: 1.5em;">Welcome, {{user.name}}</h2>
 
+  <div id="dashboardMap" style="height: 400px; margin-bottom: 2em;"></div>
+
   {{#each stations}}
   <div class="tile-card" style="margin-bottom: 1.5em;">
     <h3 class="title is-5">{{this.title}}</h3>
@@ -37,12 +39,41 @@
     <a href="/station/{{this._id}}" class="button is-small is-info" style="margin-top: 0.5em;">View Station</a>
     <a href="/dashboard/deletestation/{{this._id}}" class="button is-small is-danger" style="margin-top: 0.5em;">Delete Station</a>
   </div>
-{{/each}}
-<p class="help-text">
-  Need help with coordinates?  
-  <a href="/help" target="_blank">See common locations and their lat/lon here</a>.
-</p>
+  {{/each}}
 
-
+  <p class="help-text">
+    Need help with coordinates?  
+    <a href="/help" target="_blank">See common locations and their lat/lon here</a> or use 
+    <a href="https://www.latlong.net/" target="_blank" rel="noopener noreferrer">LatLong.net</a>.
+  </p>
   {{> add-stations}}
 </section>
+
+<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
+
+<script>
+  const stations = {{{json stations}}};
+
+  const map = L.map('dashboardMap').setView([53.3498, -6.2603], 7);
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors'
+  }).addTo(map);
+
+  const markers = [];
+
+  stations.forEach(station => {
+    if (station.latitude && station.longitude) {
+      const marker = L.marker([station.latitude, station.longitude])
+        .addTo(map)
+        .bindPopup(station.title);
+      markers.push(marker);
+    }
+  });
+
+  if (markers.length > 0) {
+    const group = L.featureGroup(markers);
+    map.fitBounds(group.getBounds().pad(0.2));
+  }
+</script>

@@ -8,18 +8,6 @@
       "_id": "f39d568f-9e9c-490f-9e3e-5207faaedbfe"
     },
     {
-      "title": "Tramore",
-      "location": "Waterford",
-      "userid": "13d4f490-ad09-4a3e-ae94-fe13da41814b",
-      "_id": "91c91ac0-b0bd-4b4e-b9e3-ea8292202af0"
-    },
-    {
-      "title": "Clonmel ",
-      "location": "Tipperary",
-      "userid": "13d4f490-ad09-4a3e-ae94-fe13da41814b",
-      "_id": "0262b6a5-877b-44e8-ba86-a641e54488fd"
-    },
-    {
       "title": "Clonmel ",
       "location": "Waterford",
       "longitude": -7.703,
@@ -30,10 +18,26 @@
     {
       "title": "Tramore",
       "location": "Waterford",
-      "longitude": 7.1464,
-      "latitude": 52.1589,
+      "longitude": -7.1526,
+      "latitude": 52.1519,
+      "userid": "13d4f490-ad09-4a3e-ae94-fe13da41814b",
+      "_id": "5fc60835-724d-45b8-abd1-df1e5ec78ca5"
+    },
+    {
+      "title": "Tramore",
+      "location": "Waterford",
+      "longitude": -7.1526,
+      "latitude": 52.1519,
       "userid": "17a48544-d54e-4096-a176-2bfa13444a42",
-      "_id": "0147da6f-de38-4802-a907-1eb3a80293b0"
+      "_id": "0c5b716f-16aa-4e1a-abdf-0c034a933b00"
+    },
+    {
+      "title": "Ballyporeen",
+      "location": "Tipperary",
+      "longitude": -8.099591,
+      "latitude": 52.272486,
+      "userid": "13d4f490-ad09-4a3e-ae94-fe13da41814b",
+      "_id": "9ec9e886-29fb-478e-9ccf-c93b284eb720"
     }
   ]
 }

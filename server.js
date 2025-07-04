@@ -7,7 +7,6 @@ import { router } from "./routes.js";
 import session from 'express-session';
 import dayjs from "dayjs";
 
-
 const app = express();
 
 app.use(cookieParser());
@@ -51,6 +50,9 @@ app.engine(".hbs", engine({
     roundToDecimal: function(number, decimals = 0) {
       if (typeof number !== 'number') return number;
       return number.toFixed(decimals);
+    },
+    json: function(context) {
+      return JSON.stringify(context);
     }
   }
 }));

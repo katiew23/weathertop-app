@@ -61,7 +61,7 @@ export const stationController = {
       ...summary,
     });
   },
-
+  
   async addReport(request, response) {
     console.log("🔥 addReport hit –", request.method, request.url, "body:", request.body);
     try {
@@ -90,12 +90,12 @@ export const stationController = {
       response.status(500).send("Internal Error");
     }
   },
-
+  
   async deleteReport(request, response) {
     await reportStore.deleteReport(request.params.reportid);
     response.redirect(`/station/${request.params.stationid}`);
   },
-
+  
   async addStation(request, response) {
     const newStation = {
       title:     request.body.title,
@@ -106,4 +106,55 @@ export const stationController = {
     await stationStore.addStation(newStation);
     response.redirect("/dashboard");
   },
+  
+  async trends(request, response) {
+    const stationId = request.params.id;
+    console.log("Fetching trends for station id:", stationId);
+    const station = await stationStore.getStationById(stationId);
+    
+    if (!station) {
+      console.log("Station not found for id:", stationId);
+      return response.status(404).send("Station not found");
+    }
+    
+    const reports = await reportStore.getReportsByStationId(stationId);
+    reports.sort((a, b) => new Date(a.date) - new Date(b.date));
+    
+    const dates = reports.map(r => new Date(r.date).toLocaleDateString());
+    const temperatures = reports.map(r => r.temperature);
+    const winds = reports.map(r => r.windSpeed);
+    const pressures = reports.map(r => r.pressure);
+    
+    response.render('trends-view', { 
+      title: `Trends for ${station.title}`,
+      station,
+      dates: JSON.stringify(dates),
+      temperatures: JSON.stringify(temperatures),
+      winds: JSON.stringify(winds),
+      pressures: JSON.stringify(pressures)
+    });
+  },
+  
+  async autoGenerateReport(request, response) {
+    const stationId = request.params.stationid;
+    try {
+      const directions = ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW'];
+      const generatedReport = {
+        code: 800,
+        description: 'Clear sky',
+        iconCode: '01d',
+        temperature: parseFloat((Math.random() * 15 + 5).toFixed(1)),
+        windSpeed: parseFloat((Math.random() * 20).toFixed(1)),
+        windDirection: directions[Math.floor(Math.random() * directions.length)],
+        pressure: parseFloat((980 + Math.random() * 40).toFixed(1)),
+        date: new Date().toISOString(),
+      };
+      
+      await reportStore.addReport(stationId, generatedReport);
+      response.json(generatedReport);
+    } catch (error) {
+      console.error("Error auto-generating report:", error);
+      response.status(500).send("Failed to auto-generate report");
+    }
+  }
 };
