@@ -205,15 +205,44 @@
   </style>
 </head>
 <body>
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      {{> brand}}
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarMenu">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div id="navbarMenu" class="navbar-menu">
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="buttons">
+            {{#if user}}
+              <a id="dashboard" class="button" href="/dashboard">Dashboard</a>
+              <a id="about" class="button" href="/about">About</a>
+              <a id="profile" class="button" href="/profile">Edit Profile</a>
+              <a id="logout" class="button" href="/logout">Logout</a>
+            {{else}}
+              <a class="button is-light" id="login" href="/login">Log in</a>
+              <a class="button is-primary" id="signup" href="/signup">Sign up</a>
+            {{/if}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
   <div class="container">
     {{{body}}}
   </div>
+
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const burger = document.querySelector('.navbar-burger');
-      const menu = document.getElementById('navbarBasicExample');
-      if(burger) {
+      const menu = document.getElementById('navbarMenu');
+      if (burger && menu) {
         burger.addEventListener('click', () => {
           burger.classList.toggle('is-active');
           menu.classList.toggle('is-active');
