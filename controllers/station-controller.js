@@ -1,6 +1,8 @@
+import fetch from "node-fetch";
 import { stationStore } from "../models/station-store.js";
 import { reportStore } from "../models/report-store.js";
 
+const apiKey = "af52a9802a4c633460b714fc47b6fb91";
 const weatherCodeMap = {
   200: { description: "Thunderstorm with light rain", iconCode: "11d" },
   300: { description: "Drizzle", iconCode: "09d" },
@@ -32,8 +34,38 @@ function computeSummary(reports) {
   };
 }
 
+function convertDegreeToDirection(deg) {
+  const directions = ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW'];
+  return directions[Math.round(deg / 45) % 8];
+}
+
+export async function getWeatherByCity(city) {
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+
+  try {
+    const res = await fetch(url);
+    const data = await res.json();
+
+    if (data.weather && data.weather.length > 0) {
+      const weather = data.weather[0];
+      return {
+        code: weather.id,
+        description: weather.description,
+        iconCode: weather.icon,  
+        temperature: data.main.temp,
+        windSpeed: data.wind.speed,
+        pressure: data.main.pressure,
+      };
+    }
+    throw new Error("No weather data");
+  } catch (error) {
+    console.error("Failed to fetch weather:", error);
+    return null;
+  }
+}
+
 export const stationController = {
-  
+
   async index(request, response) {
     const station = await stationStore.getStationById(request.params.id);
     if (!station) {
@@ -59,7 +91,7 @@ export const stationController = {
       ...summary,
     });
   },
-  
+
   async addReport(request, response) {
     const station = await stationStore.getStationById(request.params.id);
     if (!station) {
@@ -80,12 +112,12 @@ export const stationController = {
     await reportStore.addReport(station._id, newReport);
     response.redirect(`/station/${station._id}`);
   },
-  
+
   async deleteReport(request, response) {
     await reportStore.deleteReport(request.params.reportid);
     response.redirect(`/station/${request.params.stationid}`);
   },
-  
+
   async addStation(request, response) {
     const newStation = {
       title: request.body.title_en || 'Unknown Station',
@@ -96,7 +128,7 @@ export const stationController = {
     await stationStore.addStation(newStation);
     response.redirect("/dashboard");
   },
-  
+
   async trends(request, response) {
     const stationId = request.params.id;
     const station = await stationStore.getStationById(stationId);
@@ -118,21 +150,38 @@ export const stationController = {
       pressures: JSON.stringify(pressures)
     });
   },
-  
+
   async autoGenerateReport(request, response) {
-    const stationId = request.params.stationid;
-    const directions = ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW'];
-    const generatedReport = {
-      code: 800,
-      description: 'Clear sky',
-      iconCode: '01d',
-      temperature: parseFloat((Math.random() * 15 + 5).toFixed(1)),
-      windSpeed: parseFloat((Math.random() * 20).toFixed(1)),
-      windDirection: directions[Math.floor(Math.random() * directions.length)],
-      pressure: parseFloat((980 + Math.random() * 40).toFixed(1)),
-      date: new Date().toISOString(),
-    };
-    await reportStore.addReport(stationId, generatedReport);
-    response.json(generatedReport);
+    try {
+      const stationId = request.params.stationid;
+      const station = await stationStore.getStationById(stationId);
+      if (!station) {
+        return response.status(404).send("Station not found");
+      }
+
+      const url = `https://api.openweathermap.org/data/2.5/weather?lat=${station.latitude}&lon=${station.longitude}&units=metric&appid=${apiKey}`;
+      const apiResponse = await fetch(url);
+      if (!apiResponse.ok) {
+        throw new Error(`OpenWeather API error: ${apiResponse.statusText}`);
+      }
+      const weatherData = await apiResponse.json();
+
+      const generatedReport = {
+        code: weatherData.weather[0].id,
+        description: weatherData.weather[0].description,
+        iconCode: weatherData.weather[0].icon,
+        temperature: weatherData.main.temp,
+        windSpeed: (weatherData.wind.speed * 3.6).toFixed(1),
+        windDirection: convertDegreeToDirection(weatherData.wind.deg),
+        pressure: weatherData.main.pressure,
+        date: new Date().toISOString(),
+      };
+
+      await reportStore.addReport(stationId, generatedReport);
+      response.json(generatedReport);
+    } catch (error) {
+      console.error('Error fetching live weather data:', error);
+      response.status(500).send('Failed to fetch live weather data');
+    }
   }
 };

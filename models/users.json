@@ -22,6 +22,13 @@
       "email": "katiew2336@gmail.com",
       "password": "kate123",
       "_id": "1efab262-5e78-490a-ad32-da269ba9f2cd"
+    },
+    {
+      "firstName": "kate",
+      "lastName": "williams",
+      "email": "katiew23@gmail.com",
+      "password": "kate123",
+      "_id": "ef265d09-0d11-4e60-a8bd-8c50efcc6311"
     }
   ]
 }
