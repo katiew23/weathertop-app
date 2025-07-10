@@ -13,22 +13,15 @@
       "lastName": "williams",
       "email": "katiew2336@gmail.com",
       "password": "kate123",
-      "_id": "5c503fed-a657-4af9-a521-16926b4c8365",
-      "name": "Kate"
-    },
-    {
-      "firstName": "kate",
-      "lastName": "kate",
-      "email": "katiew2336@gmail.com",
-      "password": "kate123",
-      "_id": "1efab262-5e78-490a-ad32-da269ba9f2cd"
+      "_id": "63d4f87e-c699-4ced-9660-157e44707711",
+      "name": "kate kate"
     },
     {
       "firstName": "kate",
       "lastName": "williams",
-      "email": "katiew23@gmail.com",
+      "email": "katiew2336@gmail.com",
       "password": "kate123",
-      "_id": "ef265d09-0d11-4e60-a8bd-8c50efcc6311"
+      "_id": "49714a95-1100-4422-bc73-1958221352f6"
     }
   ]
 }

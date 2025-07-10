@@ -4,29 +4,29 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{{title}}</title>
-  <link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
-  />
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-  />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
   <style>
-    body {
+    /* Reset & base */
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
       background-color: #000;
       color: #eee;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
+    /* Container */
     .container {
-      background-color: #111;
+      background-color: #000;
       padding: 2em;
       border-radius: 8px;
-      box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+      box-shadow: 0 0 15px rgba(255,255,255,0.1);
       min-height: 100vh;
     }
 
+    /* Navbar */
     .navbar {
       background-color: #111 !important;
       border-bottom: 1px solid #222;
@@ -34,13 +34,11 @@
       align-items: center;
       color: white !important;
     }
-
     .navbar .button {
       background-color: #555 !important;
       color: #eee !important;
       border-color: #666 !important;
     }
-
     .navbar .button.is-active,
     .navbar .button:hover {
       background-color: #777 !important;
@@ -48,196 +46,109 @@
       border-color: #888 !important;
     }
 
-    h1.title,
-    h2.title,
-    h3.title,
-    p.subtitle,
-    p.help-text,
-    .section,
-    .container {
-      color: #eee !important;
-    }
-
-    .tile-card {
-      background-color: #222 !important;
-      color: #eee !important;
-      padding: 1.5em;
-      border-radius: 10px;
-      box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
-      margin-bottom: 2em;
-      font-weight: 600;
-      text-shadow: 0 0 6px rgba(255, 255, 255, 0.1);
-    }
-
-    .tile-card h3.title {
-      color: #fff !important;
-      font-weight: 700;
-      text-shadow: 0 0 6px rgba(255, 255, 255, 0.3);
-    }
-
-    .tile-card strong,
-    .tile-card p {
-      color: #ddd !important;
-      font-weight: 600;
-      text-shadow: 0 0 3px rgba(255, 255, 255, 0.1);
-    }
-
-    .button.is-link {
-      background-color: #444;
-      border-color: #555;
-      color: #eee;
-      transition: background-color 0.3s ease;
-    }
-    .button.is-link:hover {
-      background-color: #666;
-      color: white;
-    }
-
-    .button.is-danger {
-      background-color: #aa2222;
-      border-color: #bb3333;
-      color: #eee;
-    }
-    .button.is-danger:hover {
-      background-color: #cc4444;
-      color: white;
-    }
-    .button.is-info {
-      position: relative;
-      z-index: 1000;
-      -webkit-tap-highlight-color: transparent;
-    }
-
+    /* Links */
     a {
       color: #4a90e2;
+      text-decoration: none;
     }
     a:hover {
       color: #66b3ff;
       text-decoration: underline;
     }
 
-    section.section {
-      padding: 3em 0;
+    /* Typography */
+    .title, .subtitle, .columns p, .columns strong,
+    .help-text, h4, legend, .form-header, label[for="addReading"] {
+      color: #eee !important;
     }
 
-    .help-text,
-    label {
-      color: #ddd !important;
-    }
-
-    input::placeholder {
-      color: #bbb !important;
-    }
-
-    input, select, textarea {
+    /* Box */
+    .box {
       background-color: #222;
-      border: 1px solid #555;
       color: #eee;
-      padding: 0.5em;
-      border-radius: 5px;
-      width: 100%;
-      box-sizing: border-box;
-      margin-bottom: 1.2em;
-      transition: border-color 0.3s ease;
-    }
-    input:focus, select:focus, textarea:focus {
-      border-color: #4a90e2;
-      outline: none;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      color: #eee;
-    }
-    th, td {
-      border: 1px solid #444;
-      padding: 0.7em 1em;
-      text-align: left;
-    }
-    thead {
-      background-color: #222;
-    }
-    tbody tr:nth-child(even) {
-      background-color: #1a1a1a;
-    }
-    tbody tr:hover {
-      background-color: #333;
-    }
-
-    canvas {
-      background-color: #111;
       border-radius: 8px;
-      box-shadow: 0 0 15px rgba(255,255,255,0.1);
+      padding: 1em;
+      margin-bottom: 1.5em;
+      box-shadow: 0 0 10px rgba(255,255,255,0.1);
     }
 
-    @media (max-width: 768px) {
-      .container {
-        padding: 1em;
-      }
+    /* Table */
+    table.table {
+      background-color: #222;
+      color: #eee;
+      width: 100%;
+    }
+    table.table thead th {
+      color: #eee;
+    }
+    table.table tbody tr {
+      background-color: #111 !important;
+      color: #eee !important;
+    }
+    table.table tbody tr:nth-child(even) {
+      background-color: #111 !important; /* no striping */
+    }
+    table.table a.button {
+      color: #eee !important;
+    }
 
-      .tile-card {
-        padding: 1em;
-        margin-bottom: 1em;
-      }
+    /* Card */
+    .card {
+      background-color: black !important;
+      color: white !important;
+    }
+    .card-header-title,
+    .card-content p,
+    .card-content strong,
+    .card-content span,
+    .card p {
+      color: white !important;
+    }
+    .card-content img {
+      filter: none !important;
+    }
 
-      table {
-        display: block;
-        overflow-x: auto;
-        white-space: nowrap;
-      }
+    /* Form controls */
+    label {
+      background-color: #111;
+      color: #eee !important;
+      padding: 0.5em 0.75em;
+      display: inline-block;
+      border-radius: 4px;
+      margin-bottom: 0.3em;
+    }
+    input, select, textarea {
+      background-color: #111 !important;
+      color: #eee !important;
+      border: 1px solid #444 !important;
+      padding: 0.5em 0.75em;
+      border-radius: 4px;
+      margin-bottom: 1em;
+    }
+    input::placeholder, select::placeholder, textarea::placeholder {
+      color: #aaa !important;
+    }
 
-      section.section {
-        padding: 1.5em 0;
-      }
-
-      .buttons {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 0.5rem;
-      }
-      .buttons .button {
-        flex: 1 1 45%;
-        min-width: 120px;
-      }
+    /* Buttons */
+    button, .button {
+      color: #eee !important;
+    }
+    .button.is-info {
+      background-color: #3273dc;
+      color: white;
+    }
+    .button.is-danger {
+      background-color: #ff3860;
+      color: white;
+    }
+    .button.is-small.is-info, .button.is-small.is-danger {
+      color: white;
     }
   </style>
 </head>
 <body>
-  <nav class="navbar" role="navigation" aria-label="main navigation">
-    <div class="navbar-brand">
-      {{> brand}}
-      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarMenu">
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-      </a>
-    </div>
-    <div id="navbarMenu" class="navbar-menu">
-      <div class="navbar-end">
-        <div class="navbar-item">
-          <div class="buttons">
-            {{#if user}}
-              <a id="dashboard" class="button" href="/dashboard">Dashboard</a>
-              <a id="about" class="button" href="/about">About</a>
-              <a id="profile" class="button" href="/profile">Edit Profile</a>
-              <a id="logout" class="button" href="/logout">Logout</a>
-            {{else}}
-              <a class="button is-light" id="login" href="/login">Log in</a>
-              <a class="button is-primary" id="signup" href="/signup">Sign up</a>
-            {{/if}}
-          </div>
-        </div>
-      </div>
-    </div>
-  </nav>
+  {{{body}}}
 
-  <div class="container">
-    {{{body}}}
-  </div>
-
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const burger = document.querySelector('.navbar-burger');

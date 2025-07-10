@@ -1,4 +1,4 @@
-{{> menu}}
+{{> menu active="dashboard"}}
 <section class="section">
   <h1 class="title">{{station.title}}</h1>
   <p class="subtitle is-6">📍 Location: {{station.latitude}}, {{station.longitude}}</p>
@@ -85,7 +85,7 @@
                  alt="Icon"
                  style="height:40px;width:40px;">
           </td>
-          <td>{{formatDateTime date}}</td> 
+          <td>{{formatDateTime date}}</td>
           <td>{{temperature}}</td>
           <td>{{windSpeed}}</td>
           <td>{{windDirection}}</td>

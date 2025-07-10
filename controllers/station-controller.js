@@ -39,31 +39,6 @@ function convertDegreeToDirection(deg) {
   return directions[Math.round(deg / 45) % 8];
 }
 
-export async function getWeatherByCity(city) {
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-
-  try {
-    const res = await fetch(url);
-    const data = await res.json();
-
-    if (data.weather && data.weather.length > 0) {
-      const weather = data.weather[0];
-      return {
-        code: weather.id,
-        description: weather.description,
-        iconCode: weather.icon,  
-        temperature: data.main.temp,
-        windSpeed: data.wind.speed,
-        pressure: data.main.pressure,
-      };
-    }
-    throw new Error("No weather data");
-  } catch (error) {
-    console.error("Failed to fetch weather:", error);
-    return null;
-  }
-}
-
 export const stationController = {
 
   async index(request, response) {
@@ -82,12 +57,14 @@ export const stationController = {
       { code: 800, description: "Clear sky" },
       { code: 801, description: "Few clouds" },
     ];
+
     response.render("station-view", {
       title: station.title,
       station,
       reports,
       weatherCodes,
       latestReport,
+      user: request.user,
       ...summary,
     });
   },

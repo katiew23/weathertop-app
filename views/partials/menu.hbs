@@ -1,8 +1,13 @@
-<nav class="navbar mb-6">
+<nav class="navbar" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
     {{> brand}}
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarMenu">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
   </div>
-  <div class="navbar-menu" id="navMenu">
+  <div id="navbarMenu" class="navbar-menu">
     <div class="navbar-end">
       <div class="navbar-item">
         <div class="buttons">
@@ -15,9 +20,3 @@
     </div>
   </div>
 </nav>
-<script>
-  const activeButton = document.getElementById("{{active}}");
-  if (activeButton) {
-    activeButton.classList.add("is-primary");
-  }
-</script>
