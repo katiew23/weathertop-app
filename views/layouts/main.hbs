@@ -35,7 +35,6 @@
       color: white !important;
     }
 
-    
     .navbar .button {
       background-color: #555 !important;
       color: #eee !important;
@@ -104,10 +103,10 @@
       color: white;
     }
     .button.is-info {
-  position: relative;
-  z-index: 1000;
-  -webkit-tap-highlight-color: transparent;
-}
+      position: relative;
+      z-index: 1000;
+      -webkit-tap-highlight-color: transparent;
+    }
 
     a {
       color: #4a90e2;
@@ -181,21 +180,29 @@
         padding: 1em;
         margin-bottom: 1em;
       }
-     
+
       table {
         display: block;
         overflow-x: auto;
         white-space: nowrap;
       }
-     
+
       section.section {
         padding: 1.5em 0;
+      }
+
+      .logo-container {
+        max-width: 150px;
+        margin: 0 auto;
       }
     }
   </style>
 </head>
 <body>
   <div class="container">
+    <div class="logo-container">
+      <img src="/images/logo.png" alt="Logo" />
+    </div>
     {{{body}}}
   </div>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
