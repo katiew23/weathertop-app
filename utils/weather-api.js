@@ -12,7 +12,7 @@ export async function getWeatherByCity(city) {
       return {
         code: data.weather[0].id,
         temperature: data.main.temp,
-        windSpeed: data.wind.speed * 3.6,  // convert m/s to km/h
+        windSpeed: data.wind.speed * 3.6,  //converts m/s to km/h
         pressure: data.main.pressure
       };
     }

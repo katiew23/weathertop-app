@@ -1,11 +1,8 @@
 {{> menu}}
-
 <section class="section">
   <h1 class="title">{{station.title}}</h1>
   <p class="subtitle is-6">📍 Location: {{station.latitude}}, {{station.longitude}}</p>
-
   <div id="map" style="height: 400px; margin-top: 1em;"></div>
-
   {{#if reports.length}}
     <div class="box mb-5">
       <div class="columns is-multiline is-mobile is-vcentered">
@@ -20,7 +17,6 @@
             <p>N/A</p>
           {{/if}}
         </div>
-
         <div class="column is-one-fifth">
           <p><strong>🌡️ Temperature</strong></p>
           <p>
@@ -29,7 +25,6 @@
             Max: {{#if maxTemp}}{{maxTemp}}°C{{else}}N/A{{/if}}
           </p>
         </div>
-
         <div class="column is-one-fifth">
           <p><strong>💨 Wind Speed</strong></p>
           <p>
@@ -38,7 +33,6 @@
             Max: {{#if maxWind}}{{maxWind}} km/h{{else}}N/A{{/if}}
           </p>
         </div>
-
         <div class="column is-one-fifth">
           <p><strong>🌬️ Pressure</strong></p>
           <p>
@@ -49,7 +43,6 @@
         </div>
       </div>
     </div>
-
     <div class="box mb-5">
       <h2 class="subtitle">Latest Report</h2>
       <div class="columns is-mobile is-vcentered">
@@ -107,22 +100,17 @@
   </table>
 
   {{> add-report}}
-
   <button id="autoGenerateBtn" class="button is-danger" style="margin-top: 1em;">Auto Generate Reading</button>
   <a href="/station/{{station._id}}/trends" class="button is-info" style="margin-top: 1em;">View Temperature Trends</a>
 </section>
-
 <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-
 <script>
   const stationId = "{{station._id}}";
-
   document.getElementById('autoGenerateBtn').addEventListener('click', async () => {
     try {
       const response = await fetch(`/station/${stationId}/report/live`, { method: 'POST' });
       if (!response.ok) throw new Error('Failed to fetch live weather data');
-
       await response.json();
       window.location.reload();
     } catch (error) {

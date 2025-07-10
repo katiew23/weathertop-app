@@ -1,9 +1,7 @@
 {{> menu}}
-
 <section class="section">
   <div class="container content">
     <h1 class="title">Edit Report</h1>
-
     <form action="/station/{{station._id}}/updatereport/{{report._id}}" method="POST">
       <div class="field">
         <label class="label">Code</label>
@@ -11,28 +9,24 @@
           <input class="input" type="number" name="code" value="{{report.code}}" required />
         </div>
       </div>
-
       <div class="field">
         <label class="label">Temperature (°C)</label>
         <div class="control">
           <input class="input" type="number" name="temperature" value="{{report.temperature}}" step="0.1" required />
         </div>
       </div>
-
       <div class="field">
         <label class="label">Wind Speed (km/h)</label>
         <div class="control">
           <input class="input" type="number" name="windSpeed" value="{{report.windSpeed}}" step="0.1" required />
         </div>
       </div>
-
       <div class="field">
         <label class="label">Pressure (hPa)</label>
         <div class="control">
           <input class="input" type="number" name="pressure" value="{{report.pressure}}" required />
         </div>
       </div>
-
       <div class="field">
         <div class="control">
           <button class="button is-link">Update Report</button>

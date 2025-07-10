@@ -24,6 +24,14 @@
       "latitude": 53.3498,
       "userid": "da6403ef-2e21-4e15-9de6-b80373fe4222",
       "_id": "6f0573ce-6efc-4273-9b09-2c51cc4104fb"
+    },
+    {
+      "title": "Waterford",
+      "location": "Waterford",
+      "longitude": -7.11007,
+      "latitude": 52.259319,
+      "userid": "5c503fed-a657-4af9-a521-16926b4c8365",
+      "_id": "fdc9e891-5e96-41dd-b7dc-487fdefe5d5a"
     }
   ]
 }

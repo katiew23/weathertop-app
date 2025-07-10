@@ -1,8 +1,6 @@
 {{> welcome-menu active="login"}}
-
 <section class="section">
   <h1 class="title has-text-centered">Log in to WeatherTop</h1>
-
   <form action="/authenticate" method="POST" class="box">
     <div class="field">
       <label class="label">Email</label>
@@ -10,14 +8,12 @@
         <input class="input" type="email" placeholder="Enter your email" name="email" required>
       </div>
     </div>
-
     <div class="field">
       <label class="label">Password</label>
       <div class="control">
         <input class="input" type="password" placeholder="Enter your password" name="password" required>
       </div>
     </div>
-
     <div class="field is-grouped is-justify-content-center">
       <div class="control">
         <button class="button is-link">Log in</button>

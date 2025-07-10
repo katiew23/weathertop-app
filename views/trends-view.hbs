@@ -1,16 +1,25 @@
 {{> menu}}
-
 <section class="section">
   <h1 class="title">Temperature, Wind Speed & Pressure Trends for {{station.title}}</h1>
-  
+
   <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
     <canvas id="tempChart" style="flex: 1; min-width: 300px; max-width: 32%; height: 300px;"></canvas>
     <canvas id="windChart" style="flex: 1; min-width: 300px; max-width: 32%; height: 300px;"></canvas>
     <canvas id="pressureChart" style="flex: 1; min-width: 300px; max-width: 32%; height: 300px;"></canvas>
   </div>
-
+  
   <a href="/station/{{station._id}}" class="button is-link" style="margin-top: 1em;">Back to Station</a>
 </section>
+
+<style>
+  @media (max-width: 768px) {
+    canvas {
+      min-width: auto !important; /* remove fixed min-width on mobile */
+      max-width: 100% !important;
+      height: 250px !important; /* reduce height on mobile */
+    }
+  }
+</style>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>

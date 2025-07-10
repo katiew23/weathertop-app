@@ -14,7 +14,7 @@ export async function getWeatherByCity(city) {
       return {
         code: weather.id,
         description: weather.description,
-        iconCode: weather.icon,  // e.g. "10d"
+        iconCode: weather.icon,  
         temperature: data.main.temp,
         windSpeed: data.wind.speed,
         pressure: data.main.pressure,

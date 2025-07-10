@@ -3,30 +3,30 @@ import { reportStore } from "../models/report-store.js";
 
 const weatherCodeMap = {
   200: { description: "Thunderstorm with light rain", iconCode: "11d" },
-  300: { description: "Drizzle",             iconCode: "09d" },
-  500: { description: "Light rain",          iconCode: "10d" },
-  600: { description: "Light snow",          iconCode: "13d" },
-  701: { description: "Mist",                iconCode: "50d" },
-  800: { description: "Clear sky",           iconCode: "01d" },
-  801: { description: "Few clouds",          iconCode: "02d" },
+  300: { description: "Drizzle", iconCode: "09d" },
+  500: { description: "Light rain", iconCode: "10d" },
+  600: { description: "Light snow", iconCode: "13d" },
+  701: { description: "Mist", iconCode: "50d" },
+  800: { description: "Clear sky", iconCode: "01d" },
+  801: { description: "Few clouds", iconCode: "02d" },
 };
 
 function computeSummary(reports) {
   if (!reports.length) {
     return {
-      minTemp:     null, maxTemp:     null,
-      minWind:     null, maxWind:     null,
+      minTemp: null, maxTemp: null,
+      minWind: null, maxWind: null,
       minPressure: null, maxPressure: null,
     };
   }
-  const temps     = reports.map(r => Number(r.temperature));
-  const winds     = reports.map(r => Number(r.windSpeed));
+  const temps = reports.map(r => Number(r.temperature));
+  const winds = reports.map(r => Number(r.windSpeed));
   const pressures = reports.map(r => Number(r.pressure));
   return {
-    minTemp:     Math.min(...temps),
-    maxTemp:     Math.max(...temps),
-    minWind:     Math.min(...winds),
-    maxWind:     Math.max(...winds),
+    minTemp: Math.min(...temps),
+    maxTemp: Math.max(...temps),
+    minWind: Math.min(...winds),
+    maxWind: Math.max(...winds),
     minPressure: Math.min(...pressures),
     maxPressure: Math.max(...pressures),
   };
@@ -51,7 +51,7 @@ export const stationController = {
       { code: 801, description: "Few clouds" },
     ];
     response.render("station-view", {
-      title:       `${station.title_en} / ${station.title_ga}`,
+      title: station.title,
       station,
       reports,
       weatherCodes,
@@ -69,13 +69,13 @@ export const stationController = {
     const info = weatherCodeMap[code] || { description: "Unknown", iconCode: "01d" };
     const newReport = {
       code,
-      description:   info.description,
-      iconCode:      info.iconCode,
-      temperature:   Number(request.body.temperature),
-      windSpeed:     Number(request.body.windSpeed),
+      description: info.description,
+      iconCode: info.iconCode,
+      temperature: Number(request.body.temperature),
+      windSpeed: Number(request.body.windSpeed),
       windDirection: request.body.windDirection,
-      pressure:      Number(request.body.pressure),
-      date:          new Date().toISOString(),
+      pressure: Number(request.body.pressure),
+      date: new Date().toISOString(),
     };
     await reportStore.addReport(station._id, newReport);
     response.redirect(`/station/${station._id}`);
@@ -88,11 +88,10 @@ export const stationController = {
   
   async addStation(request, response) {
     const newStation = {
-      title_en:  request.body.title_en,
-      title_ga:  request.body.title_ga,
-      latitude:  Number(request.body.latitude),
+      title: request.body.title_en || 'Unknown Station',
+      latitude: Number(request.body.latitude),
       longitude: Number(request.body.longitude),
-      userid:    request.session.userid,
+      userid: request.session.userid,
     };
     await stationStore.addStation(newStation);
     response.redirect("/dashboard");
@@ -111,7 +110,7 @@ export const stationController = {
     const winds = reports.map(r => r.windSpeed);
     const pressures = reports.map(r => r.pressure);
     response.render('trends-view', { 
-      title: `Trends for ${station.title_en} / ${station.title_ga}`,
+      title: `Trends for ${station.title}`,
       station,
       dates: JSON.stringify(dates),
       temperatures: JSON.stringify(temperatures),
