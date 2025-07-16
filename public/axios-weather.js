@@ -1,20 +1,19 @@
-import fetch from "node-fetch";
+import axios from 'axios';
 
-const apiKey = "YOUR_API_KEY";
+const apiKey = "af52a9802a4c633460b714fc47b6fb91";
 
 export async function getWeatherByCity(city) {
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-  
+
   try {
-    const res = await fetch(url);
-    const data = await res.json();
+    const { data } = await axios.get(url);
 
     if (data.weather && data.weather.length > 0) {
       const weather = data.weather[0];
       return {
         code: weather.id,
         description: weather.description,
-        iconCode: weather.icon,  
+        iconCode: weather.icon,
         temperature: data.main.temp,
         windSpeed: data.wind.speed,
         pressure: data.main.pressure,

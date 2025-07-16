@@ -58,20 +58,28 @@
       "_id": "7387be42-f746-471e-9828-7e244196c239"
     },
     {
-      "title": "Dunmore",
-      "location": "Waterford",
-      "longitude": -6.99462,
-      "latitude": 52.14922,
-      "userid": "63d4f87e-c699-4ced-9660-157e44707711",
-      "_id": "0e085df9-3342-424e-be59-1f8d912fab75"
-    },
-    {
       "title": "Tramore",
       "location": "Waterford",
       "longitude": -7.15242,
       "latitude": 52.160858,
       "userid": "63d4f87e-c699-4ced-9660-157e44707711",
       "_id": "83e86bd3-66f3-4d47-a469-01a6ff9e0da5"
+    },
+    {
+      "title": "New york",
+      "location": "USA",
+      "longitude": -74.006,
+      "latitude": 40.7128,
+      "userid": "63d4f87e-c699-4ced-9660-157e44707711",
+      "_id": "3706b6ce-af35-4ac9-ba7f-4dcb92ca4c3a"
+    },
+    {
+      "title": "Waterford",
+      "location": "Waterford",
+      "longitude": -7.1101,
+      "latitude": 52.2593,
+      "userid": "63d4f87e-c699-4ced-9660-157e44707711",
+      "_id": "7ad80e30-2b21-414e-a5a8-20fa405c1621"
     }
   ]
 }

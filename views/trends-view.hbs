@@ -3,9 +3,9 @@
   <h1 class="title">Temperature, Wind Speed & Pressure Trends for {{station.title}}</h1>
 
   <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-    <canvas id="tempChart" style="flex: 1; min-width: 300px; max-width: 32%; height: 300px;"></canvas>
-    <canvas id="windChart" style="flex: 1; min-width: 300px; max-width: 32%; height: 300px;"></canvas>
-    <canvas id="pressureChart" style="flex: 1; min-width: 300px; max-width: 32%; height: 300px;"></canvas>
+    <div id="tempChart" style="flex: 1; min-width: 300px; max-width: 32%; height: 300px;"></div>
+    <div id="windChart" style="flex: 1; min-width: 300px; max-width: 32%; height: 300px;"></div>
+    <div id="pressureChart" style="flex: 1; min-width: 300px; max-width: 32%; height: 300px;"></div>
   </div>
   
   <a href="/station/{{station._id}}" class="button is-link" style="margin-top: 1em;">Back to Station</a>
@@ -13,7 +13,7 @@
 
 <style>
   @media (max-width: 768px) {
-    canvas {
+    #tempChart, #windChart, #pressureChart {
       min-width: auto !important; /* remove fixed min-width on mobile */
       max-width: 100% !important;
       height: 250px !important; /* reduce height on mobile */
@@ -21,76 +21,45 @@
   }
 </style>
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
   const labels = {{{dates}}};
   const temps = {{{temperatures}}};
   const winds = {{{winds}}};
   const pressures = {{{pressures}}};
 
-  const ctxTemp = document.getElementById('tempChart').getContext('2d');
-  new Chart(ctxTemp, {
-    type: 'line',
+  // Temperature Chart
+  new frappe.Chart("#tempChart", {
+    title: "Temperature (°C)",
     data: {
       labels: labels,
-      datasets: [{
-        label: 'Temperature (°C)',
-        data: temps,
-        fill: false,
-        borderColor: 'blue',
-        tension: 0.1
-      }]
+      datasets: [{ name: "Temperature", values: temps }]
     },
-    options: {
-      scales: {
-        x: { title: { display: true, text: 'Date' } },
-        y: { title: { display: true, text: 'Temperature (°C)' } }
-      },
-      maintainAspectRatio: false
-    }
+    type: "line",
+    height: 300,
+    colors: ["blue"]
   });
 
-  const ctxWind = document.getElementById('windChart').getContext('2d');
-  new Chart(ctxWind, {
-    type: 'line',
+  // Wind Speed Chart
+  new frappe.Chart("#windChart", {
+    title: "Wind Speed (km/h)",
     data: {
       labels: labels,
-      datasets: [{
-        label: 'Wind Speed (km/h)',
-        data: winds,
-        fill: false,
-        borderColor: 'green',
-        tension: 0.1
-      }]
+      datasets: [{ name: "Wind Speed", values: winds }]
     },
-    options: {
-      scales: {
-        x: { title: { display: true, text: 'Date' } },
-        y: { title: { display: true, text: 'Wind Speed (km/h)' } }
-      },
-      maintainAspectRatio: false
-    }
+    type: "line",
+    height: 300,
+    colors: ["green"]
   });
 
-  const ctxPressure = document.getElementById('pressureChart').getContext('2d');
-  new Chart(ctxPressure, {
-    type: 'line',
+  // Pressure Chart
+  new frappe.Chart("#pressureChart", {
+    title: "Pressure (hPa)",
     data: {
       labels: labels,
-      datasets: [{
-        label: 'Pressure (hPa)',
-        data: pressures,
-        fill: false,
-        borderColor: 'purple',
-        tension: 0.1
-      }]
+      datasets: [{ name: "Pressure", values: pressures }]
     },
-    options: {
-      scales: {
-        x: { title: { display: true, text: 'Date' } },
-        y: { title: { display: true, text: 'Pressure (hPa)' } }
-      },
-      maintainAspectRatio: false
-    }
+    type: "line",
+    height: 300,
+    colors: ["purple"]
   });
 </script>

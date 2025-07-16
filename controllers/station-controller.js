@@ -108,6 +108,7 @@ export const stationController = {
 
   async trends(request, response) {
     const stationId = request.params.id;
+    console.log('Fetching trends for station id:', stationId);
     const station = await stationStore.getStationById(stationId);
     if (!station) {
       return response.status(404).send("Station not found");
