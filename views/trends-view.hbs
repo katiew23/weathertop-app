@@ -14,9 +14,9 @@
 <style>
   @media (max-width: 768px) {
     #tempChart, #windChart, #pressureChart {
-      min-width: auto !important; /* remove fixed min-width on mobile */
+      min-width: auto !important; 
       max-width: 100% !important;
-      height: 250px !important; /* reduce height on mobile */
+      height: 250px !important; 
     }
   }
 </style>
@@ -27,7 +27,7 @@
   const winds = {{{winds}}};
   const pressures = {{{pressures}}};
 
-  // Temperature Chart
+  //temperature Chart
   new frappe.Chart("#tempChart", {
     title: "Temperature (°C)",
     data: {
@@ -39,7 +39,7 @@
     colors: ["blue"]
   });
 
-  // Wind Speed Chart
+  //wind Speed Chart
   new frappe.Chart("#windChart", {
     title: "Wind Speed (km/h)",
     data: {
@@ -51,7 +51,7 @@
     colors: ["green"]
   });
 
-  // Pressure Chart
+  //pressure chart
   new frappe.Chart("#pressureChart", {
     title: "Pressure (hPa)",
     data: {
