@@ -48,4 +48,4 @@ export const userStore = {
     db.data.users = [];
     await db.write();
   },
-};
+};//so anywhere where i store information in a json will have a controller that is store.js then dashboard calls that particular store

@@ -70,7 +70,7 @@ export const dashboardController = {
       return response.status(400).send("Station latitude and longitude must be valid numbers");
     }
 
-    // Fetch current weather (for saving)
+    //using axios to get the weather
     const currentWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKey}`;
     const currentResult = await axios.get(currentWeatherUrl);
 
@@ -93,7 +93,7 @@ export const dashboardController = {
     await reportStore.addReport(stationId, report);
     console.log(`Added new report for station: ${station.title}`);
 
-    // Fetch forecast trends (for charts)
+    //fetch forecast trends (for charts)
     const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKey}`;
     const forecastResult = await axios.get(forecastUrl);
 
@@ -102,7 +102,7 @@ export const dashboardController = {
 
     if (forecastResult.status === 200) {
       const forecasts = forecastResult.data.list;
-      // Get first 10 forecast points (adjust if you want more/less)
+      //loops through 10 forecasts thank you programming for this logic
       for (let i = 0; i < 10 && i < forecasts.length; i++) {
         tempTrend.push(forecasts[i].main.temp);
         trendLabels.push(forecasts[i].dt_txt);

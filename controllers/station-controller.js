@@ -1,4 +1,4 @@
-import fetch from "node-fetch";
+import axios from "axios";
 import { stationStore } from "../models/station-store.js";
 import { reportStore } from "../models/report-store.js";
 
@@ -13,7 +13,7 @@ const weatherCodeMap = {
   801: { description: "Few clouds", iconCode: "02d" },
 };
 
-function computeSummary(reports) {
+function computeSummary(reports) {//helper to find values from reports, java script info udemy
   if (!reports.length) {
     return {
       minTemp: null, maxTemp: null,
@@ -36,11 +36,10 @@ function computeSummary(reports) {
 
 function convertDegreeToDirection(deg) {
   const directions = ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW'];
-  return directions[Math.round(deg / 45) % 8];
+  return directions[Math.round(deg / 45) % 8];//helper to convert degrees into N etc//MDN Functions Guide
 }
 
 export const stationController = {
-
   async index(request, response) {
     const station = await stationStore.getStationById(request.params.id);
     if (!station) {
@@ -57,7 +56,6 @@ export const stationController = {
       { code: 800, description: "Clear sky" },
       { code: 801, description: "Few clouds" },
     ];
-
     response.render("station-view", {
       title: station.title,
       station,
@@ -108,7 +106,6 @@ export const stationController = {
 
   async trends(request, response) {
     const stationId = request.params.id;
-    console.log('Fetching trends for station id:', stationId);
     const station = await stationStore.getStationById(stationId);
     if (!station) {
       return response.status(404).send("Station not found");
@@ -119,7 +116,7 @@ export const stationController = {
     const temperatures = reports.map(r => r.temperature);
     const winds = reports.map(r => r.windSpeed);
     const pressures = reports.map(r => r.pressure);
-    response.render('trends-view', { 
+    response.render('trends-view', {
       title: `Trends for ${station.title}`,
       station,
       dates: JSON.stringify(dates),
@@ -136,14 +133,8 @@ export const stationController = {
       if (!station) {
         return response.status(404).send("Station not found");
       }
-
       const url = `https://api.openweathermap.org/data/2.5/weather?lat=${station.latitude}&lon=${station.longitude}&units=metric&appid=${apiKey}`;
-      const apiResponse = await fetch(url);
-      if (!apiResponse.ok) {
-        throw new Error(`OpenWeather API error: ${apiResponse.statusText}`);
-      }
-      const weatherData = await apiResponse.json();
-
+      const { data: weatherData } = await axios.get(url);
       const generatedReport = {
         code: weatherData.weather[0].id,
         description: weatherData.weather[0].description,
@@ -154,7 +145,6 @@ export const stationController = {
         pressure: weatherData.main.pressure,
         date: new Date().toISOString(),
       };
-
       await reportStore.addReport(stationId, generatedReport);
       response.json(generatedReport);
     } catch (error) {
@@ -163,3 +153,4 @@ export const stationController = {
     }
   }
 };
+//i copied a lot of the folders from playlist and used ctrlF and changed it to station etc

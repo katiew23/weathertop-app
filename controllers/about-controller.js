@@ -7,3 +7,4 @@ export const aboutController = {
     response.render("about-view", viewData);
   },
 };
+//controls about button when you click it and what u see

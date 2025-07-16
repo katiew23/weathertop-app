@@ -1,7 +1,7 @@
-import { v4 } from "uuid";
+import { v4 } from "uuid";//unique id's
 import { initStore } from "../utils/store-utils.js";
 
-const db = initStore("reports");
+const db = initStore("reports");//creating a database for reports
 
 export const reportStore = {
   async getAllReports() {

@@ -45,3 +45,4 @@ export const stationStore = {
     return db.data.stations.filter((station) => station.userid === userId);
   },
 };
+//this is the crud for stations tidies up the json and gives me what i have asked for in my code

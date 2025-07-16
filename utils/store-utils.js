@@ -13,3 +13,6 @@ export function initStore(dataType) {
   }
   return db;
 }
+//You tell it the name ("reports", "stations", "users").
+//It builds the filename (models/reports.json, etc.) and makes sure the file exists (creating an empty one if it doesn’t).
+// //It hands you back a db object that already knows which file to read from or write to whenever you call db.read() or db.write().

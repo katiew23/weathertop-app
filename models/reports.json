@@ -1328,6 +1328,30 @@
       "date": "2025-07-16T18:12:59.873Z",
       "_id": "131fc61b-e093-46c2-82c5-8ae426424b30",
       "stationId": "7ad80e30-2b21-414e-a5a8-20fa405c1621"
+    },
+    {
+      "code": 804,
+      "description": "overcast clouds",
+      "iconCode": "04d",
+      "temperature": 15.69,
+      "windSpeed": "11.3",
+      "windDirection": "NE",
+      "pressure": 1014,
+      "date": "2025-07-16T19:19:53.980Z",
+      "_id": "d8042e83-98c8-4deb-9054-c142237bf516",
+      "stationId": "1ef8db0e-ab6c-4cc4-9738-0b005f2d117d"
+    },
+    {
+      "code": 804,
+      "description": "overcast clouds",
+      "iconCode": "04d",
+      "temperature": 15.69,
+      "windSpeed": "11.3",
+      "windDirection": "NE",
+      "pressure": 1014,
+      "date": "2025-07-16T19:20:34.997Z",
+      "_id": "e1719743-fa2c-4c3c-9fea-91bb991d98b7",
+      "stationId": "b6ca9ca7-182b-47b9-8e21-80601a763819"
     }
   ]
 }

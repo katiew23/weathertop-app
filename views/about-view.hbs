@@ -2,20 +2,24 @@
 
 <section class="section">
   <div class="container has-text-centered">
-    <h3 class="title has-text-white">Weather Reporting Made Easy - Release 3</h3>
+    <h3 class="title has-text-white">Weather Reporting Made Easy - Release 4</h3>
     <div class="content has-text-light" style="max-width: 700px; margin: auto;">
       <p>
-        Welcome to Weather Reporting Made Easy Release 3! This release focuses on giving users a better experience by adding detailed time and date stamps to weather reports, so you always know exactly when each reading was taken. It also lets members edit their personal details and manage their stations and reports more easily — including deleting reports or whole stations, with automatic cleanup of all related data. This update makes it smoother and more reliable to track weather conditions and keep your dashboard tidy.
+        Welcome to Weather Reporting Made Easy Release 4! This release focuses on giving users a better experience by:
       </p>
-      <p>Features include:</p>
       <ul style="text-align: left; display: inline-block;">
-        <li>Member sign-up and login</li>
-        <li>Each member can create multiple weather stations</li>
-        <li>Stations include latitude and longitude</li>
-        <li>View max/min temperature, wind speed, and pressure from reports</li>
-        <li>Weather report icons for quick visual reference</li>
-        <li>Secure session management for persistent login</li>
+        <li>Adding detailed time and date stamps to every weather report so you know exactly when each reading was taken</li>
+        <li>Enabling members to view, edit and delete their personal details with full profile management</li>
+        <li>Letting members create, list and delete multiple weather stations, with automatic cleanup of all related reports</li>
+        <li>Providing full CRUD on reports—add, edit or delete individual readings, each stamped with an ISO date‑time</li>
+        <li>Fetching live weather via Axios (with wind‑degree converted to N/NE/E etc.) and auto‑generating reports with one click</li>
+        <li>Showing trend charts (temperature, wind speed, pressure) over time for both dashboard and station pages</li>
+        <li>Displaying stations as interactive map pins so you can see exactly where each lives</li>
+        <li>Implementing robust error‑handling and validation on all routes and external API calls</li>
+        <li>Persisting all data consistently in JSON via LowDB with a shared `initStore` helper</li>
+        <li>Auto‑logging in new users immediately upon signup</li>
       </ul>
     </div>
   </div>
 </section>
+

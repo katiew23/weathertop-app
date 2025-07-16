@@ -28,11 +28,13 @@ export const accountsController = {
   },
   
   async register(request, response) {
-    const user = request.body;
-    await userStore.addUser(user);
-    console.log(`Registering ${user.email}`);
-    response.redirect("/");
-  },
+  const user = request.body;
+  const newUser = await userStore.addUser(user);
+  console.log(`Registering ${newUser.email}`);
+  request.session.userid = newUser._id;
+  console.log(`Logging in ${newUser.email}`);
+    response.redirect("/dashboard");
+},
   
   async authenticate(request, response) {
     const user = await userStore.getUserByEmail(request.body.email);
@@ -88,3 +90,5 @@ export const accountsController = {
     });
   }
 };
+//this is for all words my user hub everything controlled here
+//like space planets for programming controllers and methods all stored separate
