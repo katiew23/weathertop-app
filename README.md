@@ -13,8 +13,6 @@ WeatherTop is a web application designed to help users track, manage, and monito
 
 ---
 
-## Features
-
 ### User Management
 - Sign up, login, logout, and profile editing  
 - Secure session handling  
@@ -38,7 +36,6 @@ WeatherTop is a web application designed to help users track, manage, and monito
 - Help page listing common location coordinates  
 - Link to [LatLong.net](https://www.latlong.net/) for custom lookups  
 
----
 
 ## Technologies Used
 
@@ -51,10 +48,7 @@ WeatherTop is a web application designed to help users track, manage, and monito
 - **Styling:** Bulma CSS  
 - **Icons:** Font Awesome  
 
----
-
 ## Project Structure
-
 WeatherTop/
 ├── controllers/
 │ ├── accounts-controller.js
@@ -80,12 +74,6 @@ WeatherTop/
 ├── package.json
 └── README.md
 
-yaml
-Copy
-Edit
-
----
-
 ## Installation & Setup
 
 1. **Clone the repository**  
@@ -98,22 +86,16 @@ bash
 Copy
 Edit
 npm install
-Configure environment variables
-Create a .env file in the project root with:
 
-ini
-Copy
-Edit
 OPENWEATHER_API_KEY=your_openweathermap_api_key
 MONGODB_URI=your_mongodb_connection_string
 SESSION_SECRET=your_session_secret
 Run the application
-
 bash
 Copy
 Edit
 npm start
-Visit http://localhost:3000
+Visit http://localhost:4000
 
 Usage
 Sign up for a new account or log in.
@@ -152,21 +134,9 @@ Role‑based access and shared station support
 
 Mobile‑first UI enhancements
 
-License
-This project is licensed under the MIT License.
-
-Contact
-Kate Williams
-
-GitHub: github.com/yourusername
-
-Email: katiew2336@gmail.com
 
 References
 OpenWeatherMap API
-
 Frappe Charts
-
 Leaflet.js
-
 LatLong.net
