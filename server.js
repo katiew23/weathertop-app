@@ -54,7 +54,7 @@ app.engine(".hbs", engine({
     json: function(context) {
       return JSON.stringify(context);
     }
-  }
+  }//helper functions
 }));
 app.set("view engine", ".hbs");
 app.set("views", "./views");
@@ -64,3 +64,6 @@ app.use("/", router);
 const listener = app.listen(process.env.PORT || 4000, function () {
   console.log(`🌦️ WeatherTop started on http://localhost:${listener.address().port}`);
 });
+//https://expressjs.com/en/guide/routing.html
+//https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs
+//this is like utilities in programming really, whenever we use these helper methods elsewhere we dont have to rewrtie the code

@@ -1352,6 +1352,30 @@
       "date": "2025-07-16T19:20:34.997Z",
       "_id": "e1719743-fa2c-4c3c-9fea-91bb991d98b7",
       "stationId": "b6ca9ca7-182b-47b9-8e21-80601a763819"
+    },
+    {
+      "code": 803,
+      "description": "broken clouds",
+      "iconCode": "04d",
+      "temperature": 17.33,
+      "windSpeed": "22.2",
+      "windDirection": "SW",
+      "pressure": 1012,
+      "date": "2025-07-17T17:36:10.425Z",
+      "_id": "8480cc3d-1555-4450-b0e0-6754b57fa965",
+      "stationId": "b6ca9ca7-182b-47b9-8e21-80601a763819"
+    },
+    {
+      "code": 803,
+      "description": "broken clouds",
+      "iconCode": "04d",
+      "temperature": 21.44,
+      "windSpeed": "22.2",
+      "windDirection": "S",
+      "pressure": 1011,
+      "date": "2025-07-17T17:39:54.943Z",
+      "_id": "247d21e2-82e1-44e9-8205-eaccb174836e",
+      "stationId": "89565bd1-08c4-4be4-93e7-4730b90f4e2d"
     }
   ]
 }
