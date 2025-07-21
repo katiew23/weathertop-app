@@ -96,5 +96,8 @@ app.use("/", router);
 
 
 //https://expressjs.com/en/guide/routing.html
+//https://handlebarsjs.com/guide/#custom-helpers
 //https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs
 //this is like utilities in programming really, whenever we use these helper methods elsewhere we dont have to rewrtie the code
+//https://www.tutorialspoint.com/yaml/index.html
+//https://www.freecodecamp.org/news/yaml-tutorial-everything-you-need-to-get-started/
