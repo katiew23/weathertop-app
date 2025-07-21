@@ -12,30 +12,35 @@
           </header>
 
           <div class="card-content">
-            {{#if this.latestReport}}
-              <div class="columns is-mobile is-vcentered">
-                <div class="column has-text-centered">
-                  <img src="https://openweathermap.org/img/wn/{{this.latestReport.iconCode}}@2x.png" alt="Weather icon" style="width:48px;">
-                  <p><strong>Weather</strong></p>
-                  <p>{{this.latestReport.description}}</p>
-                </div>
-                <div class="column has-text-centered">
-                  <p><strong>🌡️ Temperature</strong></p>
-                  <p>{{roundToDecimal this.latestReport.temperature 1}}°C</p>
-                </div>
-                <div class="column has-text-centered">
-                  <p><strong>💨 Wind Speed</strong></p>
-                  <p>{{roundToDecimal this.latestReport.windSpeed 1}} km/h</p>
-                </div>
-                <div class="column has-text-centered">
-                  <p><strong>📊 Pressure</strong></p>
-                  <p>{{roundToDecimal this.latestReport.pressure 1}} hPa</p>
-                </div>
-              </div>
-            {{else}}
-              <p>No reports available.</p>
-            {{/if}}
-          </div>
+  {{#if this.latestReport}}
+    <div class="columns is-mobile is-vcentered">
+      <div class="column has-text-centered">
+        <img src="https://openweathermap.org/img/wn/{{this.latestReport.iconCode}}@2x.png" alt="Weather icon" style="width:48px;">
+        <p><strong>Weather</strong></p>
+        <p>{{this.latestReport.description}}</p>
+      </div>
+      <div class="column has-text-centered">
+        <p><strong>🌡️ Temperature</strong></p>
+        <p>{{roundToDecimal this.latestReport.temperature 1}}°C</p>
+      </div>
+      <div class="column has-text-centered">
+        <p><strong>💨 Wind Speed</strong></p>
+        <p>{{roundToDecimal this.latestReport.windSpeed 1}} km/h</p>
+      </div>
+      <div class="column has-text-centered">
+        <p><strong>🌡️ Feels Like</strong></p>
+        <p>{{windChill this.latestReport.temperature this.latestReport.windSpeed}}°C</p>
+      </div>
+      <div class="column has-text-centered">
+        <p><strong>📊 Pressure</strong></p>
+        <p>{{roundToDecimal this.latestReport.pressure 1}} hPa</p>
+      </div>
+    </div>
+  {{else}}
+    <p>No reports available.</p>
+  {{/if}}
+</div>
+
 
           <footer class="card-footer">
             <a href="/station/{{this._id}}" class="card-footer-item button is-small is-info">View Station</a>

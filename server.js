@@ -6,8 +6,6 @@ import { engine } from "express-handlebars";
 import { router } from "./routes.js";
 import session from "express-session";
 import dayjs from "dayjs";
-
-// **NEW: yaml seeding imports**
 import fs from "fs";
 import yaml from "js-yaml";
 import { stationStore } from "./models/station-store.js";
@@ -21,7 +19,7 @@ app.use(express.static("public"));
 app.use(fileUpload());
 
 app.use(session({
-  secret: "abc123456789",          // your session secret
+  secret: "abc123456789",
   resave: false,
   saveUninitialized: true,
   cookie: { secure: false }
@@ -38,28 +36,45 @@ app.engine(".hbs", engine({
       };
       return iconMap[Number(code)] || "01d";
     },
-    length(ctx) { return ctx ? ctx.length : 0; },
-    subtract(a,b) { return a - b; },
-    lookup(obj, field) { return obj && obj[field]; },
-    formatDateTime(dt) { return dayjs(dt).format("D MMM YYYY HH:mm"); },
-    round(n) { return Math.round(n); },
-    roundToDecimal(n, d=0) { return typeof n==="number"? n.toFixed(d) : n; },
-    json(ctx) { return JSON.stringify(ctx); }
+    length(ctx) {
+      return ctx ? ctx.length : 0;
+    },
+    subtract(a, b) {
+      return a - b;
+    },
+    lookup(obj, field) {
+      return obj && obj[field];
+    },
+    formatDateTime(dt) {
+      return dayjs(dt).format("D MMM YYYY HH:mm");
+    },
+    round(n) {
+      return Math.round(n);
+    },
+    roundToDecimal(n, d = 0) {
+      return typeof n === "number" ? n.toFixed(d) : n;
+    },
+    json(ctx) {
+      return JSON.stringify(ctx);
+    },
+    windChill(temp, speed) {
+      const wc = 13.12
+               + 0.6215 * temp
+               - 11.37 * Math.pow(speed, 0.16)
+               + 0.3965 * temp * Math.pow(speed, 0.16);
+      return Math.round(wc * 10) / 10;
+    }
   }
 }));
 app.set("view engine", ".hbs");
 app.set("views", "./views");
 
-// mount all your routes
 app.use("/", router);
 
-// ——— YAML SEED + SERVER START ———
 (async () => {
-  // 1) Load and parse your YAML file
-  const raw    = fs.readFileSync("./data/sample-data.yaml", "utf8");
+  const raw = fs.readFileSync("./data/sample-data.yaml", "utf8");
   const sample = yaml.load(raw);
 
-  // 2) Seed stations.json if empty
   const existingStations = await stationStore.getAllStations();
   if (!existingStations.length) {
     for (const st of sample.stations) {
@@ -67,7 +82,6 @@ app.use("/", router);
     }
   }
 
-  // 3) Seed reports.json if empty
   const existingReports = await reportStore.getAllReports();
   if (!existingReports.length) {
     for (const rp of sample.reports) {
@@ -75,11 +89,11 @@ app.use("/", router);
     }
   }
 
-  // 4) Finally, start Express
   const listener = app.listen(process.env.PORT || 4000, () => {
     console.log(`🌦️ WeatherTop started on http://localhost:${listener.address().port}`);
   });
 })();
+
 
 //https://expressjs.com/en/guide/routing.html
 //https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs

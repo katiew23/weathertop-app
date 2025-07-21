@@ -21,6 +21,78 @@
       "date": "2025-07-21T11:16:20.001Z",
       "_id": "622577e3-0ea4-432a-b95d-6a6d95c76f48",
       "stationId": "4f8b67e7-337c-4bdb-ba95-bb9ce0944d96"
+    },
+    {
+      "code": 803,
+      "description": "broken clouds",
+      "iconCode": "04d",
+      "temperature": 19.34,
+      "windSpeed": "22.2",
+      "windDirection": "N",
+      "pressure": 1003,
+      "date": "2025-07-21T14:05:53.262Z",
+      "_id": "5192610f-6145-4fa8-9cf9-278d55560d56",
+      "stationId": "4f8b67e7-337c-4bdb-ba95-bb9ce0944d96"
+    },
+    {
+      "code": 804,
+      "description": "overcast clouds",
+      "iconCode": "04d",
+      "temperature": 18.63,
+      "windSpeed": "19.5",
+      "windDirection": "NW",
+      "pressure": 1003,
+      "date": "2025-07-21T14:09:57.730Z",
+      "_id": "ad8e5cc7-5526-4bbe-a745-aa436c46be5f",
+      "stationId": "62482adb-2588-46fa-8386-58ba5a5c2802"
+    },
+    {
+      "code": 803,
+      "description": "broken clouds",
+      "iconCode": "04d",
+      "temperature": 20,
+      "windSpeed": "22.2",
+      "windDirection": "N",
+      "pressure": 1003,
+      "date": "2025-07-21T14:10:07.217Z",
+      "_id": "05e037a6-9533-4f0c-98a8-520806e6f0be",
+      "stationId": "87873389-925d-420c-a1e6-ccb7a5461cda"
+    },
+    {
+      "code": 804,
+      "description": "overcast clouds",
+      "iconCode": "04d",
+      "temperature": 23.46,
+      "windSpeed": "9.6",
+      "windDirection": "N",
+      "pressure": 1000,
+      "date": "2025-07-21T14:10:54.259Z",
+      "_id": "52f2a920-5400-4ae5-bbdd-26663cd25487",
+      "stationId": "2b4ae871-787b-4625-9cad-fcdf3e05a8c2"
+    },
+    {
+      "code": 804,
+      "description": "overcast clouds",
+      "iconCode": "04d",
+      "temperature": 18.75,
+      "windSpeed": "9.3",
+      "windDirection": "S",
+      "pressure": 1015,
+      "date": "2025-07-21T14:12:03.876Z",
+      "_id": "f867dd62-a961-4e7c-9bd3-eccaa63fa04e",
+      "stationId": "0f9ed93e-a474-4f91-a701-e5af514733c7"
+    },
+    {
+      "code": 800,
+      "description": "clear sky",
+      "iconCode": "01d",
+      "temperature": 27.07,
+      "windSpeed": "14.8",
+      "windDirection": "N",
+      "pressure": 1011,
+      "date": "2025-07-21T14:12:11.662Z",
+      "_id": "0a88ec58-beb6-46a0-a4c1-207230d8c8d3",
+      "stationId": "82953929-1cf6-4e35-b99d-ac32520a8b25"
     }
   ]
 }
