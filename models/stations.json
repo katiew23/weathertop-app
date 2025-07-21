@@ -1,109 +1,18 @@
 {
-  "file": "./models/stations.json",
   "stations": [
     {
-      "title": "Tramore",
-      "location": "Waterford",
-      "longitude": -7.15242,
-      "latitude": 52.160858,
-      "userid": "5c503fed-a657-4af9-a521-16926b4c8365",
-      "_id": "3cb897bf-377b-4e4b-924c-9349074e3a3a"
-    },
-    {
-      "title": "Clonmel ",
-      "location": "Tipperary",
-      "longitude": -7.69842,
-      "latitude": 52.35561,
-      "userid": "5c503fed-a657-4af9-a521-16926b4c8365",
-      "_id": "2e828b92-69e6-4808-9089-c710e43480f5"
-    },
-    {
-      "title": "dublin",
-      "location": "ireland",
-      "longitude": -6.2603,
+      "_id": "8875d260-a370-4a69-8e85-ab2813fe5669",
+      "title": "Home Station",
       "latitude": 53.3498,
-      "userid": "da6403ef-2e21-4e15-9de6-b80373fe4222",
-      "_id": "6f0573ce-6efc-4273-9b09-2c51cc4104fb"
-    },
-    {
-      "title": "Waterford",
-      "location": "Waterford",
-      "longitude": -7.11007,
-      "latitude": 52.259319,
-      "userid": "5c503fed-a657-4af9-a521-16926b4c8365",
-      "_id": "fdc9e891-5e96-41dd-b7dc-487fdefe5d5a"
-    },
-    {
-      "title": "Dunmore",
-      "location": "Waterford",
-      "longitude": -75.605217,
-      "latitude": 41.414989,
-      "userid": "ef265d09-0d11-4e60-a8bd-8c50efcc6311",
-      "_id": "cd3f896a-1947-4b16-976f-74f2fdecb22f"
+      "longitude": -6.2603
     },
     {
       "title": "Tramore",
       "location": "Waterford",
       "longitude": -7.15242,
       "latitude": 52.160858,
-      "userid": "1efab262-5e78-490a-ad32-da269ba9f2cd",
-      "_id": "ae63d855-ef86-4ab1-8b35-4ddd471d5321"
-    },
-    {
-      "title": "Dunmore",
-      "location": "Waterford",
-      "longitude": -6.99462,
-      "latitude": 52.14922,
-      "userid": "1efab262-5e78-490a-ad32-da269ba9f2cd",
-      "_id": "7387be42-f746-471e-9828-7e244196c239"
-    },
-    {
-      "title": "Tramore",
-      "location": "Waterford",
-      "longitude": -7.15242,
-      "latitude": 52.160858,
-      "userid": "63d4f87e-c699-4ced-9660-157e44707711",
-      "_id": "83e86bd3-66f3-4d47-a469-01a6ff9e0da5"
-    },
-    {
-      "title": "New york",
-      "location": "USA",
-      "longitude": -74.006,
-      "latitude": 40.7128,
-      "userid": "63d4f87e-c699-4ced-9660-157e44707711",
-      "_id": "3706b6ce-af35-4ac9-ba7f-4dcb92ca4c3a"
-    },
-    {
-      "title": "Waterford",
-      "location": "Waterford",
-      "longitude": -7.1101,
-      "latitude": 52.2593,
-      "userid": "63d4f87e-c699-4ced-9660-157e44707711",
-      "_id": "7ad80e30-2b21-414e-a5a8-20fa405c1621"
-    },
-    {
-      "title": "Waterford",
-      "location": "Waterford",
-      "longitude": -7.1101,
-      "latitude": 52.2593,
-      "userid": "451d22d1-a4ff-49d4-b6db-a752d571991d",
-      "_id": "1ef8db0e-ab6c-4cc4-9738-0b005f2d117d"
-    },
-    {
-      "title": "Tramore",
-      "location": "Waterford",
-      "longitude": -7.1101,
-      "latitude": 52.2593,
       "userid": "49714a95-1100-4422-bc73-1958221352f6",
-      "_id": "b6ca9ca7-182b-47b9-8e21-80601a763819"
-    },
-    {
-      "title": "Dublin",
-      "location": "Dublin",
-      "longitude": -6.2603,
-      "latitude": 53.3498,
-      "userid": "49714a95-1100-4422-bc73-1958221352f6",
-      "_id": "89565bd1-08c4-4be4-93e7-4730b90f4e2d"
+      "_id": "4f8b67e7-337c-4bdb-ba95-bb9ce0944d96"
     }
   ]
 }

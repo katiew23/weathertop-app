@@ -4,8 +4,14 @@ import cookieParser from "cookie-parser";
 import fileUpload from "express-fileupload";
 import { engine } from "express-handlebars";
 import { router } from "./routes.js";
-import session from 'express-session';
+import session from "express-session";
 import dayjs from "dayjs";
+
+// **NEW: yaml seeding imports**
+import fs from "fs";
+import yaml from "js-yaml";
+import { stationStore } from "./models/station-store.js";
+import { reportStore } from "./models/report-store.js";
 
 const app = express();
 
@@ -15,7 +21,7 @@ app.use(express.static("public"));
 app.use(fileUpload());
 
 app.use(session({
-  secret: 'yourSecretKeyHere',
+  secret: "abc123456789",          // your session secret
   resave: false,
   saveUninitialized: true,
   cookie: { secure: false }
@@ -24,46 +30,57 @@ app.use(session({
 app.engine(".hbs", engine({
   extname: ".hbs",
   helpers: {
-    getIconForCode: function (code) {
+    getIconForCode(code) {
       const iconMap = {
         200: "11d", 300: "09d", 500: "10d",
         600: "13d", 701: "50d", 800: "01d",
         801: "02d", 802: "03d", 803: "04d", 804: "04d"
       };
-      return iconMap[Number(code)] || "01d"; 
+      return iconMap[Number(code)] || "01d";
     },
-    length: function (context) {
-      return context ? context.length : 0;
-    },
-    subtract: function (a, b) {
-      return a - b;
-    },
-    lookup: function (obj, field) {
-      return obj && obj[field];
-    },
-    formatDateTime: function (dateString) {
-      return dayjs(dateString).format("D MMM YYYY HH:mm");
-    },
-    round: function(number) {
-      return Math.round(number);
-    },
-    roundToDecimal: function(number, decimals = 0) {
-      if (typeof number !== 'number') return number;
-      return number.toFixed(decimals);
-    },
-    json: function(context) {
-      return JSON.stringify(context);
-    }
-  }//helper functions
+    length(ctx) { return ctx ? ctx.length : 0; },
+    subtract(a,b) { return a - b; },
+    lookup(obj, field) { return obj && obj[field]; },
+    formatDateTime(dt) { return dayjs(dt).format("D MMM YYYY HH:mm"); },
+    round(n) { return Math.round(n); },
+    roundToDecimal(n, d=0) { return typeof n==="number"? n.toFixed(d) : n; },
+    json(ctx) { return JSON.stringify(ctx); }
+  }
 }));
 app.set("view engine", ".hbs");
 app.set("views", "./views");
 
+// mount all your routes
 app.use("/", router);
 
-const listener = app.listen(process.env.PORT || 4000, function () {
-  console.log(`🌦️ WeatherTop started on http://localhost:${listener.address().port}`);
-});
+// ——— YAML SEED + SERVER START ———
+(async () => {
+  // 1) Load and parse your YAML file
+  const raw    = fs.readFileSync("./data/sample-data.yaml", "utf8");
+  const sample = yaml.load(raw);
+
+  // 2) Seed stations.json if empty
+  const existingStations = await stationStore.getAllStations();
+  if (!existingStations.length) {
+    for (const st of sample.stations) {
+      await stationStore.addStation(st);
+    }
+  }
+
+  // 3) Seed reports.json if empty
+  const existingReports = await reportStore.getAllReports();
+  if (!existingReports.length) {
+    for (const rp of sample.reports) {
+      await reportStore.addReport(rp.stationId, rp);
+    }
+  }
+
+  // 4) Finally, start Express
+  const listener = app.listen(process.env.PORT || 4000, () => {
+    console.log(`🌦️ WeatherTop started on http://localhost:${listener.address().port}`);
+  });
+})();
+
 //https://expressjs.com/en/guide/routing.html
 //https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs
 //this is like utilities in programming really, whenever we use these helper methods elsewhere we dont have to rewrtie the code

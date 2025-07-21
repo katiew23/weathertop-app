@@ -1,0 +1,14 @@
+stations:
+  - _id: "station1"
+    title: "Home Station"
+    latitude: 53.3498
+    longitude: -6.2603
+
+reports:
+  - stationId: "station1"
+    code: 800
+    description: "Clear sky"
+    temperature: 20.5
+    windSpeed: 12.3
+    pressure: 1012
+    date: "2025-07-20T14:00:00Z"
