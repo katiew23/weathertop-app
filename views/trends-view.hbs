@@ -1,16 +1,13 @@
 {{> menu}}
 <section class="section">
   <h1 class="title">Temperature, Wind Speed & Pressure Trends for {{station.title}}</h1>
-
   <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
     <div id="tempChart" style="flex: 1; min-width: 300px; max-width: 32%; height: 300px;"></div>
     <div id="windChart" style="flex: 1; min-width: 300px; max-width: 32%; height: 300px;"></div>
     <div id="pressureChart" style="flex: 1; min-width: 300px; max-width: 32%; height: 300px;"></div>
-  </div>
-  
+  </div>  
   <a href="/station/{{station._id}}" class="button is-link" style="margin-top: 1em;">Back to Station</a>
 </section>
-
 <style>
   @media (max-width: 768px) {
     #tempChart, #windChart, #pressureChart {
@@ -20,13 +17,11 @@
     }
   }
 </style>
-
 <script>
   const labels = {{{dates}}};
   const temps = {{{temperatures}}};
   const winds = {{{winds}}};
   const pressures = {{{pressures}}};
-
   //temperature Chart
   new frappe.Chart("#tempChart", {
     title: "Temperature (°C)",
@@ -38,7 +33,6 @@
     height: 300,
     colors: ["blue"]
   });
-
   //wind Speed Chart
   new frappe.Chart("#windChart", {
     title: "Wind Speed (km/h)",
@@ -50,7 +44,6 @@
     height: 300,
     colors: ["green"]
   });
-
   //pressure chart
   new frappe.Chart("#pressureChart", {
     title: "Pressure (hPa)",

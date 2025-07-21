@@ -24,7 +24,6 @@ app.use(session({
   saveUninitialized: true,
   cookie: { secure: false }
 }));
-
 app.engine(".hbs", engine({
   extname: ".hbs",
   helpers: {
@@ -88,9 +87,8 @@ app.use("/", router);
       await reportStore.addReport(rp.stationId, rp);
     }
   }
-
   const listener = app.listen(process.env.PORT || 4000, () => {
-    console.log(`🌦️ WeatherTop started on http://localhost:${listener.address().port}`);
+    console.log(`WeatherTop started on http://localhost:${listener.address().port}`);
   });
 })();
 

@@ -2,7 +2,6 @@
 <section class="section">
   <h2 class="title is-4" style="margin-bottom: 1.5em;">Welcome, {{user.name}}</h2>
   <div id="dashboardMap"></div>
-
   <div class="columns is-multiline">
     {{#each stations}}
       <div class="column is-full-mobile is-half-tablet is-one-third-desktop">
@@ -10,7 +9,6 @@
           <header class="card-header">
             <p class="card-header-title">{{this.title}}</p>
           </header>
-
           <div class="card-content">
   {{#if this.latestReport}}
     <div class="columns is-mobile is-vcentered">
@@ -40,8 +38,6 @@
     <p>No reports available.</p>
   {{/if}}
 </div>
-
-
           <footer class="card-footer">
             <a href="/station/{{this._id}}" class="card-footer-item button is-small is-info">View Station</a>
             <a href="/dashboard/deletestation/{{this._id}}" class="card-footer-item button is-small is-danger">Delete Station</a>
@@ -58,7 +54,6 @@
   </p>
   {{> add-stations}}
 </section>
-
 <style>
   #dashboardMap {
     width: 100%;
@@ -71,12 +66,8 @@
     #dashboardMap {
       height: 250px;
     }
-  }  
- 
+  }   
 </style>
-
-
-
 <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
 <script>

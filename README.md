@@ -36,7 +36,7 @@ WeatherTop is a web application designed to help users track, manage, and monito
 ## Technologies Used
 - **Backend:** Node.js, Express.js  
 - **Templating:** Handlebars (HBS)  
-- **Database:** LowDB (file‑based JSON store)  
+- **Database:** LowDB (file‑based JSON store) , seeded from YAML
 - **Charts:** Frappe Charts  
 - **Maps:** Leaflet.js + OpenStreetMap tiles  
 - **Styling:** Bulma CSS  
@@ -76,6 +76,7 @@ WeatherTop/
 git clone https://github.com/yourusername/weathertop-app.git
 cd weathertop-app
 npm install
+create or review data/sample-data.yaml for your initial stations & reports
 Open controllers/dashboard-controller.js and controllers/report-controller.js, then replace the hard‑coded apiKey value near the top of each file with your own OpenWeatherMap API key.
 
 ## Usage

@@ -124,5 +124,4 @@ export const dashboardController = {
     response.status(500).send("Internal server error");
   }
 }
-
 };

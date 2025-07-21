@@ -92,3 +92,4 @@ export const accountsController = {
 };
 //this is for all words my user hub everything controlled here
 //like space planets for programming controllers and methods all stored separate
+//i cant get over how similar programming and web dev2 is with setters and getters and utilities type functions
