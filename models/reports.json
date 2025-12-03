@@ -93,6 +93,18 @@
       "date": "2025-07-21T14:12:11.662Z",
       "_id": "0a88ec58-beb6-46a0-a4c1-207230d8c8d3",
       "stationId": "82953929-1cf6-4e35-b99d-ac32520a8b25"
+    },
+    {
+      "code": 801,
+      "description": "few clouds",
+      "iconCode": "02d",
+      "temperature": 12.51,
+      "windSpeed": "5.9",
+      "windDirection": "NW",
+      "pressure": 1022,
+      "date": "2025-07-24T06:02:19.115Z",
+      "_id": "698daabe-e83b-4736-96bd-506fe368f743",
+      "stationId": "62482adb-2588-46fa-8386-58ba5a5c2802"
     }
   ]
 }

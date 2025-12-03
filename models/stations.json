@@ -31,28 +31,12 @@
       "_id": "62482adb-2588-46fa-8386-58ba5a5c2802"
     },
     {
-      "title": "London",
-      "location": "UK",
-      "longitude": -0.1278,
-      "latitude": 51.5074,
-      "userid": "49714a95-1100-4422-bc73-1958221352f6",
-      "_id": "2b4ae871-787b-4625-9cad-fcdf3e05a8c2"
-    },
-    {
       "title": "New York",
       "location": "USA",
       "longitude": -74.006,
       "latitude": 40.7128,
       "userid": "49714a95-1100-4422-bc73-1958221352f6",
       "_id": "82953929-1cf6-4e35-b99d-ac32520a8b25"
-    },
-    {
-      "title": "LA",
-      "location": "USA",
-      "longitude": -118.2437,
-      "latitude": 34.0522,
-      "userid": "49714a95-1100-4422-bc73-1958221352f6",
-      "_id": "0f9ed93e-a474-4f91-a701-e5af514733c7"
     }
   ]
 }
